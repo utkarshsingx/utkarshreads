@@ -10,38 +10,11 @@ export default function AboutPage() {
         <h1 className="text-2xl font-normal mb-8">About</h1>
 
         <div className="text-left space-y-6">
+         
           <p>
-            I'm a developer passionate about crafting accessible, thoughtful digital experiences that blend robust
-            engineering with meaningful design.
+            Yahaha, you found me! I’m Utkarsh Singh, a designer and developer for digital products. This blog is the corner of the internet in which I share my thoughts. That's it. That's the whole concept.
           </p>
 
-          <p>
-            Currently, I'm a Senior Developer specializing in web technologies and user experience. I contribute to
-            building platforms that prioritize accessibility and performance, ensuring our products meet web standards
-            and best practices to deliver inclusive user experiences.
-          </p>
-
-          <p>
-            In the past, I've had the opportunity to develop software across a variety of settings — from startups and
-            large corporations to consulting and digital agencies. Additionally, I also share knowledge through{" "}
-            <Link href="/" className="text-accent hover:text-accent/80 no-underline hover:underline">
-              writing
-            </Link>{" "}
-            and have created educational content to help others learn web development.
-          </p>
-
-          <p>
-            In my spare time, I'm usually reading, writing, hanging out with my family, or exploring new technologies
-            and ideas. You can gain further insights into my background and interests through my{" "}
-            <Link href="/" className="text-accent hover:text-accent/80 no-underline hover:underline">
-              posts
-            </Link>{" "}
-            and{" "}
-            <Link href="/library" className="text-accent hover:text-accent/80 no-underline hover:underline">
-              book reviews
-            </Link>
-            .
-          </p>
         </div>
       </div>
 

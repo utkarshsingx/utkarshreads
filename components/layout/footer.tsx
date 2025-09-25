@@ -61,7 +61,7 @@ export function Footer() {
             Archive
           </Link>
           <a
-            href="https://instagram.com"
+            href="https://instagram.com/utkarshsingx"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-accent transition-colors"
@@ -69,7 +69,7 @@ export function Footer() {
             Instagram
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://linkedin.com/utkarshsingx"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-accent transition-colors"

@@ -17,7 +17,7 @@ export function Sidebar() {
       <nav className="flex flex-col p-6 space-y-6">
         <Link
           href="/"
-          className={`text-sm font-serif transition-colors ${
+          className={`text-2xl font-serif transition-colors font-bold ${
             isActive("/") && !pathname.includes("/about") && !pathname.includes("/library")
               ? "text-accent"
               : "text-foreground hover:text-accent"
@@ -27,7 +27,7 @@ export function Sidebar() {
         </Link>
         <Link
           href="/about"
-          className={`text-sm font-serif transition-colors ${
+          className={`text-2xl font-serif transition-colors font-bold ${
             isActive("/about") ? "text-accent" : "text-foreground hover:text-accent"
           }`}
         >
@@ -35,7 +35,7 @@ export function Sidebar() {
         </Link>
         <Link
           href="/library"
-          className={`text-sm font-serif transition-colors ${
+          className={`text-2xl font-serif transition-colors font-bold ${
             isActive("/library") ? "text-accent" : "text-foreground hover:text-accent"
           }`}
         >
