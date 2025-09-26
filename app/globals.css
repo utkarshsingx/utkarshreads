@@ -98,6 +98,7 @@
     @apply bg-background text-foreground;
     /* Using PT Serif as default font */
     font-family: "PT Serif", Georgia, serif;
+    font-size: 18px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

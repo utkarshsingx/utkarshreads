@@ -25,7 +25,7 @@ export function Footer() {
   }, [])
 
   return (
-    <footer className="ml-32 mt-16 pt-12 pb-8">
+    <footer className="mt-16 pt-12 pb-8">
       <div className="max-w-2xl mx-auto px-6">
         <div className="mb-8">
           <div className="flex items-center justify-center space-x-4 text-sm">
