@@ -7,9 +7,12 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Personal Blog",
+  title: "utkarshreads",
   description: "A personal blog featuring posts, book reviews, and thoughts",
   generator: "v0.app",
+  icons: {
+    icon: '/images/header_blank.png',
+  },
 }
 
 export default async function RootLayout({
