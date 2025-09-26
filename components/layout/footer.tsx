@@ -35,7 +35,7 @@ export function Footer() {
                 <SelectValue placeholder="All selected" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All selected</SelectItem>
+                <SelectItem value="all">All</SelectItem>
                 <SelectItem value="english">English</SelectItem>
                 <SelectItem value="hindi">Hindi</SelectItem>
               </SelectContent>

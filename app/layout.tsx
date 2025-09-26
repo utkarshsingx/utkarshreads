@@ -27,7 +27,7 @@ export default async function RootLayout({
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </div>
           </main>
-          <div className="ml-32 flex justify-center">
+          <div className="flex justify-center">
             <div className="max-w-2xl w-full">
               <Footer />
             </div>
