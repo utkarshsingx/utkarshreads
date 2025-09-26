@@ -21,6 +21,7 @@
   --muted: #1a1918;
   --muted-foreground: #8a8875;
   --accent: #a74801; /* rgb(167,72,1) - highlighted/active color */
+  --hover-color: #696969;
   --accent-foreground: #b9b7a4;
   --destructive: #dc2626;
   --destructive-foreground: #b9b7a4;
@@ -45,11 +46,12 @@
 
 @theme inline {
   /* Added PT Serif and EB Garamond fonts */
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-serif: "PT Serif", Georgia, serif;
   --font-heading: "EB Garamond", Georgia, serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
+    "Liberation Mono", Menlo, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

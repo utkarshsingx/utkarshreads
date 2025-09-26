@@ -20,7 +20,7 @@ export function Sidebar() {
           className={`text-2xl font-serif transition-colors font-bold ${
             isActive("/") && !pathname.includes("/about") && !pathname.includes("/library")
               ? "text-accent"
-              : "text-foreground hover:text-accent"
+              : "text-foreground hover:text-[var(--hover-color)]"
           }`}
         >
           Posts
@@ -28,7 +28,7 @@ export function Sidebar() {
         <Link
           href="/about"
           className={`text-2xl font-serif transition-colors font-bold ${
-            isActive("/about") ? "text-accent" : "text-foreground hover:text-accent"
+            isActive("/about") ? "text-accent" : "text-foreground hover:text-[var(--hover-color)]"
           }`}
         >
           About
@@ -36,7 +36,7 @@ export function Sidebar() {
         <Link
           href="/library"
           className={`text-2xl font-serif transition-colors font-bold ${
-            isActive("/library") ? "text-accent" : "text-foreground hover:text-accent"
+            isActive("/library") ? "text-accent" : "text-foreground hover:text-[var(--hover-color)]"
           }`}
         >
           Library
