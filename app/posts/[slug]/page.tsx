@@ -40,25 +40,23 @@ export default async function PostPage({ params }: PostPageProps) {
               Back to Posts
             </Button>
           </Link>
-
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold text-balance mb-4">{post.title}</h1>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-              <time dateTime={post.date}>{formattedDate}</time>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          </div>
+          <h1 className="text-4xl font-bold text-balance mb-4 text-center">{post.title}</h1>
         </div>
 
         <article className="prose prose-lg max-w-none">
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </article>
+
+        <div className="flex flex-wrap justify-center gap-2 mt-8">
+          {post.tags.map((tag) => (
+            <Badge key={tag} variant="secondary">
+              {tag}
+            </Badge>
+          ))}
+        </div>
+        <div className="text-center text-sm text-muted-foreground mt-4">
+          <time dateTime={post.date}>{formattedDate}</time>
+        </div>
       </div>
     </div>
   )
