@@ -31,7 +31,7 @@ export default async function PostsPage() {
             <ol className="list-decimal list-inside space-y-2">
               {featuredPosts.map((post, index) => (
                 <li key={post.slug} className="text-base" style={{ color: '#B9B7A4' }}>
-                  <Link href={`/posts/${post.slug}`} className="hover:text-accent transition-colors">
+                  <Link href={`/posts/${post.slug}`} className=" hover:underline transition-colors">
                     {post.title}
                   </Link>
                 </li>

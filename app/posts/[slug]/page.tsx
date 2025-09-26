@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { AnimatedHeader } from "@/components/animated-header"
 
 interface PostPageProps {
   params: Promise<{ slug: string }>
@@ -31,16 +32,17 @@ export default async function PostPage({ params }: PostPageProps) {
   })
 
   return (
-    <div className="container py-8">
+    <div className="space-y-12 mt-10">
+      <AnimatedHeader imageSrc="/images/header_blank.png" alt="Post Header" />
       <div className="max-w-3xl mx-auto">
         <div className="mb-8">
           <Link href="/">
-            <Button variant="ghost" size="sm" className="mb-6">
+            <Button variant="ghost" size="sm" className="mb-6 mt-12 hover:bg-transparent hover:text-foreground hover:underline">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Posts
             </Button>
           </Link>
-          <h1 className="text-4xl font-bold text-balance mb-4 text-center">{post.title}</h1>
+          <h1 className="text-4xl font-bold text-balance mt-24 mb-12 text-center">{post.title}</h1>
         </div>
 
         <article className="prose prose-lg max-w-none">
