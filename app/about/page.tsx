@@ -6,8 +6,8 @@ export default function AboutPage() {
     <div className="space-y-8">
       <AnimatedHeader imageSrc="/images/header_laptop.png" alt="About Header" />
 
-      <div className="prose prose-lg mx-auto text-center">
-        <h1 className="text-2xl font-normal mb-8">About</h1>
+      <div className="prose prose-lg mx-auto text-left">
+        <h1 className="text-2xl font-semibold  00 mb-8">About</h1>
 
         <div className="text-left space-y-10 text-lg">
          
