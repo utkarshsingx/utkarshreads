@@ -26,12 +26,12 @@ export default async function RootLayout({
         <div className="min-h-screen bg-background text-foreground">
           <Sidebar />
           <main className="ml-32 flex justify-center">
-            <div className="max-w-2xl w-full px-6 py-8">
+            <div className="max-w-xl w-full px-6 py-8">
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </div>
           </main>
           <div className="flex justify-center">
-            <div className="max-w-2xl w-full">
+            <div className="max-w-xl w-full">
               <Footer />
             </div>
           </div>
