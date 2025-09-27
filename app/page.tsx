@@ -1,14 +1,17 @@
-import { getAllPosts } from "@/lib/content"
+import { getAllPosts, getTotalPostPages, postsPerPage } from "@/lib/content"
 import { PostCard } from "@/components/posts/post-card"
 import { AnimatedHeader } from "@/components/animated-header"
 import Link from "next/link"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 export default async function PostsPage() {
   const allPosts = await getAllPosts()
   const latestPost = allPosts[0]
-  const otherPosts = allPosts.slice(1)
-  const featuredPosts = otherPosts.filter((post) => post.featured)
+  const otherPosts = allPosts.slice(1, postsPerPage)
+  const featuredPosts = allPosts.filter((post) => post.featured)
+  const totalPages = await getTotalPostPages()
 
   return (
     <div className="space-y-12">
@@ -48,7 +51,17 @@ export default async function PostsPage() {
           <PostCard key={post.slug} post={post} />
         ))}
       </section>
+
+      {totalPages > 1 && (
+        <div className="flex justify-end">
+          <Link href="/posts/page/2">
+            <Button variant="ghost" className="hover:bg-transparent hover:text-foreground hover:underline">
+              Older Posts
+              <ArrowRight className="h-4 w-4 ml-2" />
+            </Button>
+          </Link>
+        </div>
+      )}
     </div>
   )
 }
-

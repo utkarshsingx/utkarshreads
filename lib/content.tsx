@@ -27,8 +27,9 @@ export interface BookData {
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 const booksDirectory = path.join(process.cwd(), 'content/books')
+export const postsPerPage = 5
 
-export async function getAllPosts(): Promise<PostData[]> {
+export async function getAllPosts(page?: number): Promise<PostData[]> {
   const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData = await Promise.all(
     fileNames.map(async (fileName) => {
@@ -47,7 +48,20 @@ export async function getAllPosts(): Promise<PostData[]> {
       }
     }),
   )
-  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))
+  const sortedPosts = allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))
+
+  if (page) {
+    const startIndex = (page - 1) * postsPerPage
+    const endIndex = startIndex + postsPerPage
+    return sortedPosts.slice(startIndex, endIndex)
+  }
+
+  return sortedPosts
+}
+
+export async function getTotalPostPages() {
+  const fileNames = fs.readdirSync(postsDirectory)
+  return Math.ceil(fileNames.length / postsPerPage)
 }
 
 export async function getPostBySlug(slug: string): Promise<PostData | null> {
@@ -135,4 +149,3 @@ export function getBooksByYear(books: BookData[], year: number): BookData[] {
 export function getPostsByTag(posts: PostData[], tag: string): PostData[] {
   return posts.filter((post) => post.tags.some((t) => t.toLowerCase() === tag.toLowerCase()))
 }
-
