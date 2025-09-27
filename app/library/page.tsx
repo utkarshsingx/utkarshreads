@@ -28,7 +28,7 @@ export default async function LibraryPage() {
       <AnimatedHeader imageSrc="/images/header_books.png" alt="Library Header" />
 
       <div className="text-center">
-        <h1 className="text-2xl font-heading font-normal mb-6">Library</h1>
+        <h1 className="text-3xl text-balance mt-24 mb-12 text-left">Library</h1>
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           {genres.map((genre) => (

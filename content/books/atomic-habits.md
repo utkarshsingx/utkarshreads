@@ -3,8 +3,8 @@ title: "Atomic Habits"
 author: "James Clear"
 year: 2024
 genre: ["Productivity", "Self-Help"]
-rating: 5
-cover: "/placeholder.svg?height=300&width=200"
+rating: 3.5
+cover: "/images/covers/deep-work-cover.jpg"
 ---
 
 # Atomic Habits by James Clear

@@ -25,40 +25,69 @@ export function LibraryList({ booksByYear, years }: LibraryListProps) {
   }
 
   const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <span key={i} className={i < rating ? "text-accent" : "text-muted-foreground"}>
-        ★
-      </span>
-    ))
-  }
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        // Full star
+        stars.push(<span key={`star-full-${i}`} style={{ color: '#B9B7A4' }}>★</span>);
+      } else if (i - 0.5 <= rating) {
+        // Half star
+        stars.push(
+          <span key={`star-half-${i}`} className="relative" style={{ color: '#575654' }}>
+            ★
+            <span className="absolute top-0 left-0 w-1/2 overflow-hidden" style={{ color: '#B9B7A4' }}>
+              ★
+            </span>
+          </span>
+        );
+      } else {
+        // Empty star
+        stars.push(<span key={`star-empty-${i}`} style={{ color: '#575654' }}>★</span>);
+      }
+    }
+    return stars;
+  };
 
   return (
     <div className="space-y-8">
       {years.map((year) => (
         <section key={year} className="space-y-4">
           <div className="flex items-center space-x-2">
-            <h2 className="text-lg font-heading font-normal">{year}</h2>
+            <h2 className="font-heading font-normal" style={{ color: '#7D7165', fontSize: '21px' }}>{year}</h2>
+            <div className="flex items-center justify-center w-5 h-5 rounded-full" style={{ backgroundColor: '#1E1E1D' }}>
+              <span className="text-[10px] font-bold" style={{ color: '#7D7165' }}>
+                {booksByYear[year].length}
+              </span>
+            </div>
           </div>
 
           <div className="space-y-2">
-            {booksByYear[year].map((book) => (
-              <div key={book.slug} className="flex items-center justify-between py-2">
-                <div className="flex items-center space-x-3">
-                  <Link
-                    href={`/library/${book.slug}`}
-                    className="font-serif text-foreground hover:text-accent transition-colors"
-                  >
-                    {book.title}
-                  </Link>
-                  <div className="flex flex-wrap gap-1">
-                    {book.genre.map((genre) => (
-                      <span key={genre} className={`px-2 py-0.5 rounded text-xs font-sans ${getGenreColor(genre)}`}>
-                        {genre}
-                      </span>
-                    ))}
+            {booksByYear[year].map((book, index) => (
+              <div key={book.slug}>
+                <div className="flex items-center justify-between py-2">
+                  <div>
+                    <Link
+                      href={`/library/${book.slug}`}
+                      className="font-serif text-foreground hover:text-accent transition-colors"
+                    >
+                      {book.title}
+                    </Link>
+                    <p style={{ color: '#575654', fontSize: '0.875rem' }}>{book.author}</p>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="flex flex-wrap gap-1">
+                      {book.genre.map((genre) => (
+                        <span key={genre} className={`px-2 py-0.5 rounded text-xs font-sans ${getGenreColor(genre)}`}>
+                          {genre}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center">{renderStars(book.rating)}</div>
                   </div>
                 </div>
-                <div className="flex items-center space-x-1">{renderStars(book.rating)}</div>
+                {index < booksByYear[year].length - 1 && (
+                  <hr className="border-t my-2" style={{ borderColor: '#1E1E1D' }} />
+                )}
               </div>
             ))}
           </div>
