@@ -8,30 +8,35 @@ import Image from "next/image"
 export function Footer() {
   const [selectedLanguage, setSelectedLanguage] = useState("all")
   const [isVisible, setIsVisible] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY
+      const currentScrollY = window.scrollY
       const windowHeight = window.innerHeight
       const documentHeight = document.documentElement.scrollHeight
+      const scrollPercentage = currentScrollY / (documentHeight - windowHeight)
 
-      // Show animation when user scrolls past 50% of the page
-      const scrollPercentage = scrollPosition / (documentHeight - windowHeight)
-      setIsVisible(scrollPercentage > 0.5)
+      if (currentScrollY > lastScrollY && scrollPercentage > 0.5) {
+        setIsVisible(true)
+      } else {
+        setIsVisible(false)
+      }
+      setLastScrollY(currentScrollY)
     }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   return (
-    <footer className="mt-16 pt-12 pb-8">
+    <footer className="mt-24 pt-12 pb-12">
       <div className="max-w-2xl mx-auto px-6">
         <div className="mb-8">
           <div className="flex items-center justify-center space-x-4 text-sm">
             <span className="text-muted-foreground">Language:</span>
             <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-              <SelectTrigger className="w-32">
+              <SelectTrigger className="w-24">
                 <SelectValue placeholder="All selected" />
               </SelectTrigger>
               <SelectContent>
@@ -40,16 +45,6 @@ export function Footer() {
                 <SelectItem value="hindi">Hindi</SelectItem>
               </SelectContent>
             </Select>
-          </div>
-        </div>
-
-        <div className="flex justify-center mb-8">
-          <div
-            className={`transition-all duration-700 ease-out ${
-              isVisible ? "transform translate-y-0 opacity-100" : "transform translate-y-8 opacity-0"
-            }`}
-          >
-            <Image src="/images/footer_love.png" alt="Love" width={96} height={96} className="w-24 h-24" />
           </div>
         </div>
 
@@ -77,6 +72,17 @@ export function Footer() {
             LinkedIn
           </a>
         </div>
+
+        <div className="flex justify-center mt-32 mb-32">
+          <div
+            className={`transition-all duration-700 ease-out ${
+              isVisible ? "transform translate-y-0 opacity-100" : "transform translate-y-8 opacity-0"
+            }`}
+          >
+            <Image src="/images/footer_love.png" alt="Love" width={96} height={96} className="w-24 h-24" />
+          </div>
+        </div>
+
       </div>
     </footer>
   )

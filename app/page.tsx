@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import React from "react"
 
 export default async function PostsPage() {
   const allPosts = await getAllPosts()
@@ -14,7 +15,7 @@ export default async function PostsPage() {
   const totalPages = await getTotalPostPages()
 
   return (
-    <div className="space-y-12">
+    <div>
       <AnimatedHeader imageSrc="/images/header_blank.png" alt="Posts Header" />
 
       {/* Latest Post */}
@@ -26,19 +27,24 @@ export default async function PostsPage() {
 
       {/* Featured Posts Section - Redesigned as per request */}
       {featuredPosts.length > 0 && (
-        <section className="space-y-8">
+        <section className="space-y-8 mt-16">
           <div className="border border-border p-6 rounded-lg" style={{ backgroundColor: '#1E1E1D', borderColor: '#2a2926' }}>
             <div className="flex justify-center mb-6">
               <Image src="/images/footer_love.png" alt="Favorites Header" width={96} height={96} className="w-24 h-24" />
             </div>
-            <h2 className="text-center font-normal text-2xl mb-4" style={{ color: '#B9B7A4' }}>Some Favorites To Get You Started</h2>
+            <h2 className="text-center font-normal text-2xl mb-12" style={{ color: '#B9B7A4' }}>Some Favorites To Get You Started</h2>
             <ol className="list-decimal list-inside space-y-2">
-              {featuredPosts.map((post) => (
-                <li key={post.slug} className="text-base" style={{ color: '#B9B7A4' }}>
-                  <Link href={`/posts/${post.slug}`} className="hover:text-[var(--hover-color)] hover:underline transition-colors">
-                    {post.title}
-                  </Link>
-                </li>
+              {featuredPosts.map((post, index) => (
+                <React.Fragment key={post.slug}>
+                  <li className="text-base" style={{ color: '#B9B7A4' }}>
+                    <Link href={`/posts/${post.slug}`} className="hover:text-[var(--hover-color)] hover:underline transition-colors">
+                      {post.title}
+                    </Link>
+                  </li>
+                  {index < featuredPosts.length - 1 && (
+                    <hr className="my-4 border-t" style={{ borderColor: '#343431' }} />
+                  )}
+                </React.Fragment>
               ))}
             </ol>
           </div>

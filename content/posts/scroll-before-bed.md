@@ -6,7 +6,7 @@ tags: ["Reality", "Habits", "Mental Health"]
 featured: true
 ---
 
-You’re not scrolling TikTok at 1:47 a.m. because the videos are good.  
+You’re not scrolling Instagram at 1:47 a.m. because the videos are good.  
 You’re scrolling because turning off the phone means being left alone with yourself.  
 
 That’s the part nobody says out loud.  

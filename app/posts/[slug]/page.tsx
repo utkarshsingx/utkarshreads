@@ -32,7 +32,7 @@ export default async function PostPage({ params }: PostPageProps) {
   })
 
   return (
-    <div className="space-y-12 mt-10">
+    <div>
       <AnimatedHeader imageSrc="/images/header_blank.png" alt="Post Header" />
       <div className="max-w-3xl mx-auto">
         <div className="mb-8">

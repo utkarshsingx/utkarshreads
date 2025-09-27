@@ -18,11 +18,11 @@ export function AnimatedHeader({ imageSrc, alt }: AnimatedHeaderProps) {
   }, [])
 
   // Calculate scale and opacity based on scroll position
-  const scale = Math.max(0.5, 1 - scrollY * 0.002)
-  const opacity = Math.max(0.3, 1 - scrollY * 0.003)
+  const scale = Math.max(0.5, 1 - scrollY * 0.003)
+  const opacity = Math.max(0.3, 1 - scrollY * 0.005)
 
   return (
-    <div className="flex justify-center mb-12">
+    <div className="flex justify-center my-32">
       <div
         className="transition-all duration-300 ease-out"
         style={{

@@ -15,11 +15,11 @@ export function PostCard({ post }: PostCardProps) {
   return (
     <article className="space-y-3">
      <Link href={`/posts/${post.slug}`} className="group block">
-        <h2 className="text-2xl font-bold text-balance mt-16 mb-8 text-center group-hover:text-[var(--hover-color)] transition-colors">{post.title}</h2>
+        <h2 className="text-3xl font-medium text-balance mt-32 mb-8 text-center group-hover:text-[var(--hover-color)] transition-colors">{post.title}</h2>
       </Link>
 
      <div
-        className="leading-relaxed font-medium" 
+        className="leading-relaxed font-medium"
         style={{ color: '#B9B7A4' }}
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
