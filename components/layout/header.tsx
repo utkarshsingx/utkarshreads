@@ -22,8 +22,8 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-lg transition-colors hover:text-accent ${
-                  isActive ? "text-foreground" : "text-muted-foreground"
+                className={`text-lg transition-colors hover:text-[var(--hover-color)] ${
+                  isActive ? "text-accent" : "text-foreground"
                 }`}
               >
                 {item.name}
