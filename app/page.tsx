@@ -9,16 +9,17 @@ export default async function PostsPage() {
   const latestPost = allPosts[0]
   const otherPosts = allPosts.slice(1)
   const featuredPosts = otherPosts.filter((post) => post.featured)
-  const regularPosts = otherPosts.filter((post) => !post.featured)
 
   return (
     <div className="space-y-12">
       <AnimatedHeader imageSrc="/images/header_blank.png" alt="Posts Header" />
 
       {/* Latest Post */}
-      <section className="space-y-8">
-        <PostCard post={latestPost} />
-      </section>
+      {latestPost && (
+        <section className="space-y-8">
+          <PostCard post={latestPost} />
+        </section>
+      )}
 
       {/* Featured Posts Section - Redesigned as per request */}
       {featuredPosts.length > 0 && (
@@ -29,9 +30,9 @@ export default async function PostsPage() {
             </div>
             <h2 className="text-center font-normal text-2xl mb-4" style={{ color: '#B9B7A4' }}>Some Favorites To Get You Started</h2>
             <ol className="list-decimal list-inside space-y-2">
-              {featuredPosts.map((post, index) => (
+              {featuredPosts.map((post) => (
                 <li key={post.slug} className="text-base" style={{ color: '#B9B7A4' }}>
-                  <Link href={`/posts/${post.slug}`} className=" hover:underline transition-colors">
+                  <Link href={`/posts/${post.slug}`} className="hover:text-[var(--hover-color)] hover:underline transition-colors">
                     {post.title}
                   </Link>
                 </li>
@@ -41,12 +42,13 @@ export default async function PostsPage() {
         </section>
       )}
 
-      {/* Regular Posts Section */}
+      {/* Other Posts Section */}
       <section className="space-y-8">
-        {regularPosts.map((post) => (
+        {otherPosts.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}
       </section>
     </div>
   )
 }
+
