@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/content"
 import { AnimatedHeader } from "@/components/animated-header"
+import { Header } from "@/components/layout/header" 
 import Link from "next/link"
 
 export default async function ArchivePage() {
@@ -30,7 +31,8 @@ export default async function ArchivePage() {
     <div className="container py-8">
       <div className="max-w-4xl mx-auto">
         <AnimatedHeader imageSrc="/images/header_blank.png" alt="Archive Header" />
-
+        <Header />
+        
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-bold text-balance mb-4">Archive</h1>
         </div>

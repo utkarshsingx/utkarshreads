@@ -1,10 +1,12 @@
 import Link from "next/link"
 import { AnimatedHeader } from "@/components/animated-header"
+import { Header } from "@/components/layout/header" 
 
 export default function AboutPage() {
   return (
     <div className="space-y-8">
       <AnimatedHeader imageSrc="/images/header_laptop.png" alt="About Header" />
+      <Header /> 
 
       <div className="prose prose-lg mx-auto text-left">
         <h1 className="text-3xl text-balance mt-24 mb-12">About</h1>

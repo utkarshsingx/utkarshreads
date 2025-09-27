@@ -25,12 +25,12 @@ export default async function RootLayout({
       <body className="font-serif">
         <div className="min-h-screen bg-background text-foreground">
           <Sidebar />
-          <main className="flex justify-center">
+          <main className="flex justify-center lg:pl-40">
             <div className="max-w-lg w-full px-6 pt-[18px] pb-8">
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </div>
           </main>
-          <div className="flex justify-center">
+          <div className="flex justify-center lg:pl-40">
             <div className="max-w-xl w-full">
               <Footer />
             </div>

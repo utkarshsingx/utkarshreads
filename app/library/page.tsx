@@ -1,6 +1,7 @@
 import { getAllBooks, getAllGenres } from "@/lib/content"
 import { LibraryList } from "@/components/library/library-list"
 import { AnimatedHeader } from "@/components/animated-header"
+import { Header } from "@/components/layout/header" 
 import Link from "next/link"
 
 export default async function LibraryPage() {
@@ -26,6 +27,7 @@ export default async function LibraryPage() {
   return (
     <div className="space-y-8">
       <AnimatedHeader imageSrc="/images/header_books.png" alt="Library Header" />
+      <Header /> 
 
       <div className="text-center">
         <h1 className="text-3xl text-balance mt-24 mb-12 text-left">Library</h1>

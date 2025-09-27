@@ -1,6 +1,7 @@
 import { getAllPosts, getTotalPostPages, postsPerPage } from "@/lib/content"
 import { PostCard } from "@/components/posts/post-card"
 import { AnimatedHeader } from "@/components/animated-header"
+import { Header } from "@/components/layout/header" 
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -17,15 +18,14 @@ export default async function PostsPage() {
   return (
     <div>
       <AnimatedHeader imageSrc="/images/header_blank.png" alt="Posts Header" />
+      <Header /> 
 
-      {/* Latest Post */}
       {latestPost && (
         <section className="space-y-8">
           <PostCard post={latestPost} />
         </section>
       )}
 
-      {/* Featured Posts Section - Redesigned as per request */}
       {featuredPosts.length > 0 && (
         <section className="space-y-8 mt-16">
           <div className="border border-border p-6 rounded-lg" style={{ backgroundColor: '#1E1E1D', borderColor: '#2a2926' }}>
@@ -51,7 +51,6 @@ export default async function PostsPage() {
         </section>
       )}
 
-      {/* Other Posts Section */}
       <section className="space-y-8">
         {otherPosts.map((post) => (
           <PostCard key={post.slug} post={post} />

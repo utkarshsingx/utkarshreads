@@ -13,7 +13,7 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-32 bg-background z-50">
+    <aside className="hidden lg:block fixed left-0 top-0 h-full lg:w-40 bg-background z-50">
       <nav className="flex flex-col p-6 space-y-6">
         <Link
           href="/"

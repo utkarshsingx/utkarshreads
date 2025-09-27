@@ -13,9 +13,9 @@ export function Header() {
   ]
 
   return (
-    <header className="w-full py-8">
+    <header className="w-full py-4 lg:hidden">
       <div className="max-w-2xl mx-auto px-6">
-        <nav className="flex items-center space-x-6">
+        <nav className="flex items-center justify-center space-x-6">
           {navigation.map((item) => {
             const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
             return (
