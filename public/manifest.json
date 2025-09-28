@@ -1,0 +1,21 @@
+{
+  "name": "utkarshreads",
+  "short_name": "utkarshreads",
+  "description": "A personal blog featuring posts, book reviews, and thoughts.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#100f0f",
+  "theme_color": "#100f0f",
+  "icons": [
+    {
+      "src": "/images/header_blank.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/header_blank.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -22,6 +22,9 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body className="font-serif">
         <div className="min-h-screen bg-background text-foreground">
           <Sidebar />
@@ -37,6 +40,21 @@ export default async function RootLayout({
           </div>
         </div>
         <Analytics />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                  }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                  });
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   )
