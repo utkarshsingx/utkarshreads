@@ -14,10 +14,10 @@ export function Sidebar() {
 
   return (
     <aside className="hidden lg:block fixed left-0 top-0 h-full lg:w-40 bg-background z-50">
-      <nav className="flex flex-col p-6 space-y-6">
+      <nav className="flex flex-col p-6 space-y-2">
         <Link
           href="/"
-          className={`text-2xl font-serif transition-colors font-bold ${
+          className={`text-3xl font-serif transition-colors font-bold ${
             isActive("/") && !pathname.includes("/about") && !pathname.includes("/library")
               ? "text-accent"
               : "text-foreground hover:text-[var(--hover-color)]"
@@ -27,7 +27,7 @@ export function Sidebar() {
         </Link>
         <Link
           href="/about"
-          className={`text-2xl font-serif transition-colors font-bold ${
+          className={`text-3xl font-serif transition-colors font-bold ${
             isActive("/about") ? "text-accent" : "text-foreground hover:text-[var(--hover-color)]"
           }`}
         >
@@ -35,7 +35,7 @@ export function Sidebar() {
         </Link>
         <Link
           href="/library"
-          className={`text-2xl font-serif transition-colors font-bold ${
+          className={`text-3xl font-serif transition-colors font-bold ${
             isActive("/library") ? "text-accent" : "text-foreground hover:text-[var(--hover-color)]"
           }`}
         >

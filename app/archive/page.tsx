@@ -1,6 +1,6 @@
 import { getAllPosts } from "@/lib/content"
 import { AnimatedHeader } from "@/components/animated-header"
-import { Header } from "@/components/layout/header" 
+import { Header } from "@/components/layout/header"
 import Link from "next/link"
 
 export default async function ArchivePage() {
@@ -32,9 +32,9 @@ export default async function ArchivePage() {
       <div className="max-w-4xl mx-auto">
         <AnimatedHeader imageSrc="/images/header_blank.png" alt="Archive Header" />
         <Header />
-        
+
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold text-balance mb-4">Archive</h1>
+          <h1 className="text-2xl font-heading font-normal mb-6">Archive</h1>
         </div>
 
         <section>
@@ -51,7 +51,7 @@ export default async function ArchivePage() {
                     {postsByYear[year][month].map((post) => (
                       <div key={post.slug} className="flex justify-between items-baseline">
                         <div className="group flex flex-1 items-baseline min-w-0">
-                          <Link href={`/posts/${post.slug}`} className="block flex-shrink-0">
+                          <Link href={`/posts/${post.slug}`} className="block flex-shrink min-w-0">
                             <h4 className="text-lg font-normal group-hover:text-accent transition-colors truncate">{post.title}</h4>
                           </Link>
                           <span className="flex-grow border-b-2 border-dotted mx-4" style={{ borderColor: '#282726' }} aria-hidden="true"></span>

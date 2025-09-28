@@ -42,7 +42,7 @@ export default async function PostPage({ params }: PostPageProps) {
               Back to Posts
             </Button>
           </Link>
-          <h1 className="text-4xl font-bold text-balance mt-24 mb-12 text-center">{post.title}</h1>
+          <h1 className="text-3xl text-balance mt-24 mb-12 text-center">{post.title}</h1>
         </div>
 
         <article className="prose prose-lg max-w-none">
