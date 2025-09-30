@@ -57,14 +57,9 @@ export default async function GenrePage({ params }: GenrePageProps) {
       <Header />
 
       <div className="text-center">
-        <Link href="/library">
-          <Button variant="ghost" size="sm" className="mb-6">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Library
-          </Button>
-        </Link>
-
-        <h1 className="text-3xl text-balance mt-24 mb-12 text-left">Books about {genre}</h1>
+        <h1 className="text-3xl text-balance mt-24 mb-12 text-left">
+          Books about <span style={{ color: '#575654', fontWeight: 'inherit' }}>{genre}</span>
+        </h1>
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           {allGenres.map((g) => (
