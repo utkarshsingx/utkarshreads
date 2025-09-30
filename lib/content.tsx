@@ -12,6 +12,8 @@ export interface PostData {
   tags: string[]
   content: string
   featured?: boolean
+  image?: string
+  imageAlt?: string
 }
 
 export interface BookData {
