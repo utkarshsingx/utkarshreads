@@ -68,12 +68,23 @@ export default async function BookPage({ params }: BookPageProps) {
           <h1 className="text-[28px] font-normal text-balance mt-8 mb-8">{book.title}</h1>
 
           <div className="flex items-center justify-center flex-wrap gap-x-4 gap-y-2 text-muted-foreground mb-8">
-            <span>{book.author}</span>
+            <Link 
+              href={`/library/author/author:${book.author.toLowerCase().replace(/\s+/g, "-")}`}
+              className="text-foreground hover:text-[var(--muted-text)] hover:underline transition-all duration-200 cursor-pointer"
+            >
+              {book.author}
+            </Link>
             <div className="flex flex-wrap gap-2">
               {book.genre.map((genre) => (
-                <Badge key={genre} variant="secondary">
-                  {genre}
-                </Badge>
+                <Link 
+                  key={genre} 
+                  href={`/library/genre/genre:${genre.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="hover:opacity-80 transition-opacity"
+                >
+                  <Badge variant="secondary" className="cursor-pointer hover:bg-accent">
+                    {genre}
+                  </Badge>
+                </Link>
               ))}
             </div>
             {renderStars(book.rating)}

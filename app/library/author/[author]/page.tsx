@@ -1,42 +1,40 @@
-import { getAllBooks, getBooksByGenre, getAllGenres } from "@/lib/content"
+import { getAllBooks, getBooksByAuthor, getAllAuthors } from "@/lib/content"
 import { LibraryList } from "@/components/library/library-list"
 import { AnimatedHeader } from "@/components/animated-header"
 import { Header } from "@/components/layout/header"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-interface GenrePageProps {
-  params: { genre: string }
+interface AuthorPageProps {
+  params: { author: string }
 }
 
 export async function generateStaticParams() {
   const books = await getAllBooks()
-  const genres = getAllGenres(books)
-  return genres.map((genre) => ({
-    genre: `genre:${genre.toLowerCase().replace(/\s+/g, "-")}`,
+  const authors = getAllAuthors(books)
+  return authors.map((author) => ({
+    author: `author:${author.toLowerCase().replace(/\s+/g, "-")}`,
   }))
 }
 
-export default async function GenrePage({ params }: GenrePageProps) {
-  const { genre: genreParam } = params
+export default async function AuthorPage({ params }: AuthorPageProps) {
+  const { author: authorParam } = params
   const books = await getAllBooks()
-  const allGenres = getAllGenres(books)
+  const allAuthors = getAllAuthors(books)
 
   // Decode the URL-encoded parameter
-  const decodedGenreParam = decodeURIComponent(genreParam)
-  const genreSlug = decodedGenreParam.replace("genre:", "")
-  const genre = allGenres.find((g) => g.toLowerCase().replace(/\s+/g, "-") === genreSlug)
+  const decodedAuthorParam = decodeURIComponent(authorParam)
+  const authorSlug = decodedAuthorParam.replace("author:", "")
+  const author = allAuthors.find((a) => a.toLowerCase().replace(/\s+/g, "-") === authorSlug)
 
-  if (!genre) {
+  if (!author) {
     notFound()
   }
 
-  const genreBooks = getBooksByGenre(books, genre)
+  const authorBooks = getBooksByAuthor(books, author)
 
   // Group books by year
-  const booksByYear = genreBooks.reduce(
+  const booksByYear = authorBooks.reduce(
     (acc, book) => {
       if (!acc[book.year]) {
         acc[book.year] = []
@@ -44,7 +42,7 @@ export default async function GenrePage({ params }: GenrePageProps) {
       acc[book.year].push(book)
       return acc
     },
-    {} as Record<number, typeof genreBooks>,
+    {} as Record<number, typeof authorBooks>,
   )
 
   const years = Object.keys(booksByYear)
@@ -58,21 +56,21 @@ export default async function GenrePage({ params }: GenrePageProps) {
 
       <div className="text-center">
         <h1 className="text-3xl text-balance mt-24 mb-12 text-left">
-          Books about <span style={{ color: 'var(--muted-text)', fontWeight: 'inherit' }}>{genre}</span>
+          Books by <span style={{ color: 'var(--muted-text)' }}>{author}</span>
         </h1>
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {allGenres.map((g) => (
+          {allAuthors.map((a) => (
             <Link
-              key={g}
-              href={g === genre ? "/library" : `/library/genre/genre:${g.toLowerCase().replace(/\s+/g, "-")}`}
+              key={a}
+              href={a === author ? "/library" : `/library/author/author:${a.toLowerCase().replace(/\s+/g, "-")}`}
               className={`px-3 py-1 text-sm rounded-full border transition-colors ${
-                g === genre
+                a === author
                   ? "bg-accent text-accent-foreground border-accent"
                   : "border-border hover:bg-accent hover:text-accent-foreground"
               }`}
             >
-              {g}
+              {a}
             </Link>
           ))}
         </div>

@@ -46,7 +46,7 @@ export default async function ArchivePage() {
                 return months.indexOf(b) - months.indexOf(a);
               }).map((month) => (
                 <div key={month} className="mb-4">
-                  <h3 className="text-xl font-heading font-normal mb-2" style={{ color: '#575654' }}>{month}</h3>
+                  <h3 className="text-xl font-heading font-normal mb-2" style={{ color: 'var(--muted-text)' }}>{month}</h3>
                   <div className="space-y-3">
                     {postsByYear[year][month].map((post) => (
                       <div key={post.slug} className="flex justify-between items-baseline">

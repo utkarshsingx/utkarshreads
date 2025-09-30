@@ -29,20 +29,20 @@ export function LibraryList({ booksByYear, years }: LibraryListProps) {
     for (let i = 1; i <= 5; i++) {
       if (i <= rating) {
         // Full star
-        stars.push(<span key={`star-full-${i}`} style={{ color: '#B9B7A4' }}>★</span>);
+        stars.push(<span key={`star-full-${i}`} style={{ color: 'var(--foreground)' }}>★</span>);
       } else if (i - 0.5 <= rating) {
         // Half star
         stars.push(
-          <span key={`star-half-${i}`} className="relative" style={{ color: '#575654' }}>
+          <span key={`star-half-${i}`} className="relative" style={{ color: 'var(--muted-text)' }}>
             ★
-            <span className="absolute top-0 left-0 w-1/2 overflow-hidden" style={{ color: '#B9B7A4' }}>
+            <span className="absolute top-0 left-0 w-1/2 overflow-hidden" style={{ color: 'var(--foreground)' }}>
               ★
             </span>
           </span>
         );
       } else {
         // Empty star
-        stars.push(<span key={`star-empty-${i}`} style={{ color: '#575654' }}>★</span>);
+        stars.push(<span key={`star-empty-${i}`} style={{ color: 'var(--muted-text)' }}>★</span>);
       }
     }
     return stars;
@@ -53,9 +53,9 @@ export function LibraryList({ booksByYear, years }: LibraryListProps) {
       {years.map((year) => (
         <section key={year} className="space-y-4">
           <div className="flex items-center space-x-2">
-            <h2 className="font-heading font-normal" style={{ color: '#7D7165', fontSize: '21px' }}>{year}</h2>
-            <div className="flex items-center justify-center w-5 h-5 rounded-full" style={{ backgroundColor: '#1E1E1D' }}>
-              <span className="text-[10px] font-bold" style={{ color: '#7D7165' }}>
+            <h2 className="font-heading font-normal" style={{ color: 'var(--year-heading)', fontSize: '21px' }}>{year}</h2>
+            <div className="flex items-center justify-center w-5 h-5 rounded-full" style={{ backgroundColor: 'var(--divider-color)' }}>
+              <span className="text-[10px] font-bold" style={{ color: 'var(--year-heading)' }}>
                 {booksByYear[year].length}
               </span>
             </div>
@@ -72,21 +72,20 @@ export function LibraryList({ booksByYear, years }: LibraryListProps) {
                     >
                       {book.title}
                     </Link>
-                    <p style={{ color: '#575654', fontSize: '0.875rem' }}>{book.author}</p>
+                    <p style={{ color: 'var(--muted-text)', fontSize: '0.875rem' }}>{book.author}</p>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="flex flex-wrap gap-1">
-                      {book.genre.map((genre) => (
-                        <span key={genre} className={`px-2 py-0.5 rounded text-xs font-sans ${getGenreColor(genre)}`}>
-                          {genre}
-                        </span>
-                      ))}
+                      {/* Show only the first (main) genre */}
+                      <span className={`px-2 py-0.5 rounded text-xs font-sans ${getGenreColor(book.genre[0])}`}>
+                        {book.genre[0]}
+                      </span>
                     </div>
                     <div className="flex items-center">{renderStars(book.rating)}</div>
                   </div>
                 </div>
                 {index < booksByYear[year].length - 1 && (
-                  <hr className="border-t my-2" style={{ borderColor: '#1E1E1D' }} />
+                  <hr className="border-t my-2" style={{ borderColor: 'var(--divider-color)' }} />
                 )}
               </div>
             ))}

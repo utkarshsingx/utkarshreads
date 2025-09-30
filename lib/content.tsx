@@ -148,6 +148,18 @@ export function getBooksByYear(books: BookData[], year: number): BookData[] {
   return books.filter((book) => book.year === year)
 }
 
+export function getAllAuthors(books: BookData[]): string[] {
+  const authors = new Set<string>()
+  books.forEach((book) => {
+    authors.add(book.author)
+  })
+  return Array.from(authors).sort()
+}
+
+export function getBooksByAuthor(books: BookData[], author: string): BookData[] {
+  return books.filter((book) => book.author === author)
+}
+
 export function getPostsByTag(posts: PostData[], tag: string): PostData[] {
   return posts.filter((post) => post.tags.some((t) => t.toLowerCase() === tag.toLowerCase()))
 }
