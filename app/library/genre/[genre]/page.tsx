@@ -1,12 +1,14 @@
 import { getAllBooks, getBooksByGenre, getAllGenres } from "@/lib/content"
 import { LibraryList } from "@/components/library/library-list"
+import { AnimatedHeader } from "@/components/animated-header"
+import { Header } from "@/components/layout/header"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
 interface GenrePageProps {
-  params: Promise<{ genre: string }>
+  params: { genre: string }
 }
 
 export async function generateStaticParams() {
@@ -18,11 +20,13 @@ export async function generateStaticParams() {
 }
 
 export default async function GenrePage({ params }: GenrePageProps) {
-  const { genre: genreParam } = await params
+  const { genre: genreParam } = params
   const books = await getAllBooks()
   const allGenres = getAllGenres(books)
 
-  const genreSlug = genreParam.replace("genre:", "")
+  // Decode the URL-encoded parameter
+  const decodedGenreParam = decodeURIComponent(genreParam)
+  const genreSlug = decodedGenreParam.replace("genre:", "")
   const genre = allGenres.find((g) => g.toLowerCase().replace(/\s+/g, "-") === genreSlug)
 
   if (!genre) {
@@ -49,6 +53,9 @@ export default async function GenrePage({ params }: GenrePageProps) {
 
   return (
     <div className="space-y-8">
+      <AnimatedHeader imageSrc="/images/header_books.png" alt="Library Header" />
+      <Header />
+
       <div className="text-center">
         <Link href="/library">
           <Button variant="ghost" size="sm" className="mb-6">
@@ -57,13 +64,13 @@ export default async function GenrePage({ params }: GenrePageProps) {
           </Button>
         </Link>
 
-        <h1 className="text-2xl font-heading font-normal mb-6">Books about {genre}</h1>
+        <h1 className="text-3xl text-balance mt-24 mb-12 text-left">Books about {genre}</h1>
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           {allGenres.map((g) => (
             <Link
               key={g}
-              href={g === genre ? "/library" : `/library/genre:${g.toLowerCase().replace(/\s+/g, "-")}`}
+              href={g === genre ? "/library" : `/library/genre/genre:${g.toLowerCase().replace(/\s+/g, "-")}`}
               className={`px-3 py-1 text-sm rounded-full border transition-colors ${
                 g === genre
                   ? "bg-accent text-accent-foreground border-accent"
