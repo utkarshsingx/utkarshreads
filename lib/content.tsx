@@ -43,10 +43,15 @@ export async function getAllPosts(page?: number): Promise<PostData[]> {
         .use(html)
         .process(matterResult.content)
       const contentHtml = processedContent.toString()
+      
+      // Ensure tags is always an array
+      const data = matterResult.data as { title: string; date: string; excerpt: string; tags?: string[]; featured?: boolean, image?: string, imageAlt?: string }
+      
       return {
         slug,
         content: contentHtml,
-        ...(matterResult.data as { title: string; date: string; excerpt: string; tags: string[]; featured?: boolean }),
+        ...data,
+        tags: data.tags || [], // Default to empty array if tags are missing
       }
     }),
   )
@@ -77,10 +82,15 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
     .use(html)
     .process(matterResult.content)
   const content = processedContent.toString()
+
+  // Ensure tags is always an array
+  const data = matterResult.data as { title: string; date: string; excerpt: string; tags?: string[]; featured?: boolean, image?: string, imageAlt?: string }
+  
   return {
     slug,
     content,
-    ...(matterResult.data as { title: string; date: string; excerpt: string; tags: string[]; featured?: boolean }),
+    ...data,
+    tags: data.tags || [], // Default to empty array if tags are missing
   }
 }
 
@@ -127,7 +137,10 @@ export async function getBookBySlug(slug: string): Promise<BookData | null> {
 export function getAllTags(posts: PostData[]): string[] {
   const tags = new Set<string>()
   posts.forEach((post) => {
-    post.tags.forEach((tag) => tags.add(tag))
+    // This check is now redundant because we default to an empty array, but it's good practice
+    if (post.tags) { 
+      post.tags.forEach((tag) => tags.add(tag))
+    }
   })
   return Array.from(tags).sort()
 }
@@ -163,3 +176,4 @@ export function getBooksByAuthor(books: BookData[], author: string): BookData[] 
 export function getPostsByTag(posts: PostData[], tag: string): PostData[] {
   return posts.filter((post) => post.tags.some((t) => t.toLowerCase() === tag.toLowerCase()))
 }
+
