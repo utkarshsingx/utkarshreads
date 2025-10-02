@@ -43,5 +43,3 @@ The world isn’t ready for me.
 I’m not ready for the world.  
 But I will meet it anyway.  
 ```
-
-Do you want me to **expand the symposium arc** into a climax where each sin tempts him in new, sharper ways—like a final battle against himself—or keep the ending subtle and haunting, as above?
