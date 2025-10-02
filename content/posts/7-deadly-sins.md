@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "The Seven Hungers of a Brilliant Mind"  
 date: "2025-10-02"  
