@@ -57,8 +57,8 @@ export default async function GenrePage({ params }: GenrePageProps) {
       <Header />
 
       <div className="text-center">
-        <h1 className="text-3xl text-balance mt-24 mb-12 text-left">
-          Books about <span style={{ color: 'var(--muted-text)', fontWeight: 'inherit' }}>{genre}</span>
+        <h1 className="text-3xl text-balance mt-24 mb-12 text-left"><span className="text-2xl">Books about</span>
+           <span style={{ color: 'var(--muted-text)', fontWeight: 'inherit' }}>{genre}</span>
         </h1>
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
