@@ -7,6 +7,7 @@ import Link from "next/link"
 export default async function LibraryPage() {
   const books = await getAllBooks()
   const genres = getAllGenres(books)
+  const hasBooks = books.length > 0
 
   // Group books by year
   const booksByYear = books.reduce(
@@ -45,7 +46,13 @@ export default async function LibraryPage() {
         </div>
       </div>
 
-      <LibraryList booksByYear={booksByYear} years={years} />
+      {hasBooks ? (
+        <LibraryList booksByYear={booksByYear} years={years} />
+      ) : (
+        <p className="text-center text-sm md:text-base" style={{ color: 'var(--muted-text)' }}>
+          hold up eager one! let the author read and then he'll share you his thoughts. thanks for being patient. :)
+        </p>
+      )}
     </div>
   )
 }
