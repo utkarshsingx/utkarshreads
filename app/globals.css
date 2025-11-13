@@ -4,6 +4,14 @@
 /* Import Google Fonts for PT Serif and EB Garamond */
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
+@font-face {
+  font-family: "Copernicus Book Italic";
+  src: url("/fonts/Copernicus-BookItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -167,7 +175,16 @@
   }
 
   .prose blockquote {
-    @apply border-l-2 border-accent pl-6 italic text-muted-foreground mb-6;
+    border-left: 3px solid #343431;
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+    font-family: "Copernicus Book Italic", "EB Garamond", Georgia, serif;
+    font-style: italic;
+    color: #1e1915;
+  }
+
+  .prose blockquote p {
+    margin-bottom: 0;
   }
 
   .prose ul,
