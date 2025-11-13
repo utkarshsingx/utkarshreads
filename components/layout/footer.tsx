@@ -58,12 +58,12 @@ export function Footer() {
         href={link.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-accent transition-colors"
+        className="hover:text-accent transition-colors footer-link"
       >
         {link.label}
       </a>
     ) : (
-      <Link key={link.label} href={link.href} className="hover:text-accent transition-colors">
+      <Link key={link.label} href={link.href} className="hover:text-accent transition-colors footer-link">
         {link.label}
       </Link>
     )
@@ -87,7 +87,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="text-sm text-[var(--footer-link)] text-center space-y-1">
+        <div className="text-sm text-[var(--footer-link)] text-center space-y-1 footer-text">
           <div className="flex justify-center gap-x-4">{firstRowLinks.map(renderLink)}</div>
           {secondRowLinks.length > 0 && (
             <div className="flex justify-center gap-x-4">{secondRowLinks.map(renderLink)}</div>

@@ -14,6 +14,8 @@ export interface PostData {
   featured?: boolean
   image?: string
   imageAlt?: string
+  backgroundVideo?: string
+  textTone?: "light" | "dark"
   hidden?: boolean
 }
 
@@ -59,6 +61,8 @@ export async function getAllPosts(
         image?: string
         imageAlt?: string
         hidden?: boolean
+        backgroundVideo?: string
+        textTone?: "light" | "dark"
       }
       
       return {
@@ -66,6 +70,8 @@ export async function getAllPosts(
         content: contentHtml,
         ...data,
         tags: data.tags || [], // Default to empty array if tags are missing
+        backgroundVideo: data.backgroundVideo,
+        textTone: data.textTone,
         hidden: data.hidden ?? false,
       }
     }),
@@ -109,6 +115,8 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
     image?: string
     imageAlt?: string
     hidden?: boolean
+    backgroundVideo?: string
+    textTone?: "light" | "dark"
   }
   
   return {
@@ -116,6 +124,8 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
     content,
     ...data,
     tags: data.tags || [], // Default to empty array if tags are missing
+    backgroundVideo: data.backgroundVideo,
+    textTone: data.textTone,
     hidden: data.hidden ?? false,
   }
 }

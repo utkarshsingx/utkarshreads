@@ -199,4 +199,30 @@
   .prose img {
     @apply rounded-lg mb-6;
   }
+
+  .post-video-mode-light body,
+  .post-video-mode-light body * {
+    color: rgba(255, 255, 255, 0.92) !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
+  }
+
+  .post-video-mode-light body .text-muted-foreground {
+    color: rgba(235, 235, 235, 0.9) !important;
+  }
+
+  .post-video-mode-light body .footer-link,
+  .post-video-mode-light body .footer-text,
+  .post-video-mode-light body .footer-text * {
+    color: rgba(255, 255, 255, 0.92) !important;
+  }
+
+  .post-video-mode-light body .text-accent {
+    color: var(--accent) !important;
+  }
+
+  .post-video-mode-dark body,
+  .post-video-mode-dark body * {
+    color: rgba(24, 24, 24, 0.95) !important;
+    text-shadow: 0 2px 6px rgba(255, 255, 255, 0.45);
+  }
 }
