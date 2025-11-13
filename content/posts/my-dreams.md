@@ -9,31 +9,51 @@ backgroundVideo: "/backgrounds/my-dreams/SOMEONE ELSE S DREAM (by Absofacto) [Of
 textTone: "light"
 ---
 
-Every time your eyes close, I feel my body disappear
-My fingers start fading then I'm gone, gone, gone
-I wake up in the deepest corner of your mind and wonder why
-I'm living in your world instead of mine
-Yours instead of mine
-Even if I don't know quite exactly where I want to be
-I'm not gonna stay here stuck in someone else's dream
-Maybe I'll find mine's a nightmare, but I don't even care
-I just wanna live inside my own dream
-I run for the horizon to see if I can shoot straight off again
-Would it even wake you if I fall, fall, fall?
-Throwing rocks at your golden sky
-But they fall so short I have to laugh
-Make a little echo in your mind
-Even if I don't know quite exactly where I want to be
-I'm not gonna stay here stuck in someone else's dream
-Maybe I'll find mine's a nightmare, but I don't even care
-I just wanna live inside my own dream
-I just wanna live inside my own dream
-Even if I don't know quite exactly where I want to be
-I'm not gonna stay here stuck in someone else's dream
-Maybe I'll find mine's a nightmare, but I don't even care
-I just wanna live inside my own
-Even if I don't know quite exactly where I want to be
-I'm not gonna stay here stuck in someone else's dream
-Maybe I'll find mine's a nightmare, but I don't even care
-I just wanna live inside my own
-Even if I don't know.
+What is a dream? To act upon desires?  
+Asked a young boy.  
+But what is a desire?  
+Our Needs? Pleasures?  
+To become someone or save something.  
+To understand ourselves?  
+What do we actually want?   
+
+Dream big Dreamer.  
+Keep on dreaming. 
+
+Delulu is a solulu?   
+Really? Maybe.   
+Maybe not.  
+Or maybe the only solution is the courage to imagine.  
+
+My dream?   
+Author's?   
+Does he knows it yet?   
+Maybe a author at 25?  
+
+Dream big Dreamer.  
+
+An artist? Yeah, that can work.  
+Musician? You bet! But his voice?  
+A chef?   
+An entrepreneur?  
+A restaurant at hill station with library?  
+Longing for someone--?   
+
+Keep on dreaming.   
+
+You see others? Young boy.  
+Are they living their dreams? Was it theirs?   
+Are they happy?   
+Or living someone else's dream?   
+But how do you know that?  
+
+>Maybe I'll find mine's a nightmare,   
+>But I don't even care.   
+>I just wanna live inside my own   
+>Even if i don't know.  
+
+Dream big Dreamer.  
+because they say,   
+It is never too late to be what you might have been,   
+always wanted to be. 
+So keep on dreaming. 

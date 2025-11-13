@@ -18,6 +18,12 @@ export function PostPageView({ post }: PostPageViewProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [isMuted, setIsMuted] = useState(false)
   const [videoLoaded, setVideoLoaded] = useState(false)
+  const [videoFailed, setVideoFailed] = useState(false)
+  const originalStyles = useRef<{
+    bodyBackground: string
+    rootBackground?: string
+    sidebarBackground?: string
+  }>()
 
   const formattedDate = useMemo(
     () =>
@@ -41,20 +47,50 @@ export function PostPageView({ post }: PostPageViewProps) {
   }, [post.backgroundVideo])
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted
+    const video = videoRef.current
+    if (!video) return
+    video.muted = isMuted
+    const playPromise = video.play()
+    if (playPromise && !isMuted) {
+      playPromise.catch(() => {
+        setIsMuted(true)
+      })
     }
-  }, [isMuted])
+  }, [isMuted, videoLoaded])
 
   useEffect(() => {
-    const originalBodyBg = document.body.style.backgroundColor
+    if (!backgroundSrc || videoFailed) {
+      setIsMuted(true)
+    } else if (videoLoaded) {
+      setIsMuted(false)
+    }
     const rootContainer = document.querySelector<HTMLElement>("body > div")
     const sidebar = document.querySelector<HTMLElement>("[data-sidebar-root]")
-    const originalRootBg = rootContainer?.style.backgroundColor
-    const originalSidebarBg = sidebar?.style.backgroundColor
     const html = document.documentElement
 
-    if (videoLoaded) {
+    if (!originalStyles.current) {
+      originalStyles.current = {
+        bodyBackground: document.body.style.backgroundColor,
+        rootBackground: rootContainer?.style.backgroundColor,
+        sidebarBackground: sidebar?.style.backgroundColor,
+      }
+    }
+
+    const restore = () => {
+      if (!originalStyles.current) {
+        return
+      }
+      document.body.style.backgroundColor = originalStyles.current.bodyBackground
+      if (rootContainer) {
+        rootContainer.style.backgroundColor = originalStyles.current.rootBackground ?? ""
+      }
+      if (sidebar) {
+        sidebar.style.backgroundColor = originalStyles.current.sidebarBackground ?? ""
+      }
+      html.classList.remove("post-video-mode-light", "post-video-mode-dark")
+    }
+
+    if (backgroundSrc && !videoFailed) {
       document.body.style.backgroundColor = "transparent"
       if (rootContainer) {
         rootContainer.style.backgroundColor = "transparent"
@@ -69,19 +105,19 @@ export function PostPageView({ post }: PostPageViewProps) {
         html.classList.add("post-video-mode-dark")
         html.classList.remove("post-video-mode-light")
       }
+    } else {
+      restore()
     }
 
     return () => {
-      document.body.style.backgroundColor = originalBodyBg
-      if (rootContainer) {
-        rootContainer.style.backgroundColor = originalRootBg ?? ""
-      }
-      if (sidebar) {
-        sidebar.style.backgroundColor = originalSidebarBg ?? ""
-      }
-      html.classList.remove("post-video-mode-light", "post-video-mode-dark")
+      restore()
     }
-  }, [post.textTone, videoLoaded])
+  }, [backgroundSrc, post.textTone, videoLoaded, videoFailed])
+
+  useEffect(() => {
+    setVideoFailed(false)
+    setVideoLoaded(false)
+  }, [post.backgroundVideo])
 
   const handleToggleSound = () => {
     setIsMuted((prev) => !prev)
@@ -89,7 +125,7 @@ export function PostPageView({ post }: PostPageViewProps) {
 
   return (
     <div className="relative min-h-screen">
-      {backgroundSrc && (
+      {backgroundSrc && !videoFailed && (
         <>
           <video
             ref={videoRef}
@@ -99,8 +135,14 @@ export function PostPageView({ post }: PostPageViewProps) {
             loop
             playsInline
             muted={isMuted}
-            onLoadedData={() => setVideoLoaded(true)}
-            onError={() => setVideoLoaded(false)}
+            onLoadedData={() => {
+              setVideoLoaded(true)
+              setIsMuted(false)
+            }}
+            onError={() => {
+              setVideoLoaded(false)
+              setVideoFailed(true)
+            }}
           />
           {videoLoaded && (
             <div
@@ -126,19 +168,21 @@ export function PostPageView({ post }: PostPageViewProps) {
                 Back to Posts
               </Button>
             </Link>
-            <h1 className="text-3xl text-balance mt-24 mb-12 text-center">{post.title}</h1>
-            {backgroundSrc && (
-              <div className="flex justify-center">
+
+            {backgroundSrc && !videoFailed && (
+              <div className="flex justify-center mb-6">
                 <Button
                   variant="secondary"
                   size="sm"
                   onClick={handleToggleSound}
-                  className="hover:opacity-80 bg-transparent border border-white/40 text-white"
+                  className="rounded-full px-6 py-2 text-sm font-medium bg-white/8 border border-white/20 text-white backdrop-blur-sm hover:bg-white/12 transition-all"
                 >
                   {isMuted ? "Sound On" : "Sound Off"}
                 </Button>
               </div>
             )}
+
+            <h1 className="text-3xl text-balance mt-6 mb-18 text-center">{post.title}</h1>
           </div>
 
           <article className="prose prose-lg max-w-none">
@@ -150,7 +194,7 @@ export function PostPageView({ post }: PostPageViewProps) {
               <Badge
                 key={tag}
                 variant="secondary"
-                className="bg-transparent border border-white/30 text-white"
+                className="rounded-full border border-white/20 bg-white/8 text-white px-4 py-1 text-sm font-medium backdrop-blur-sm"
               >
                 {tag}
               </Badge>
