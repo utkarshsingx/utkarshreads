@@ -2,8 +2,23 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Image from "next/image"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
+type FooterLink = {
+  label: string
+  href: string
+  external?: boolean
+}
+
+const footerLinks: FooterLink[] = [
+  { label: "About", href: "/about" },
+  { label: "RSS", href: "/rss.xml" },
+  { label: "Archive", href: "/archive" },
+  { label: "Instagram", href: "https://instagram.com/utkarshsingx", external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/utkarshsingx/", external: true },
+  { label: "GitHub", href: "https://github.com/utkarshsingx/", external: true },
+]
 
 export function Footer() {
   const [selectedLanguage, setSelectedLanguage] = useState("all")
@@ -29,6 +44,30 @@ export function Footer() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [lastScrollY])
 
+  const totalLinks = footerLinks.length
+  const firstRowCount =
+    totalLinks < 5 ? totalLinks : totalLinks % 2 === 0 ? totalLinks / 2 + 1 : Math.ceil(totalLinks / 2)
+
+  const firstRowLinks = footerLinks.slice(0, firstRowCount)
+  const secondRowLinks = footerLinks.slice(firstRowCount)
+
+  const renderLink = (link: FooterLink) =>
+    link.external ? (
+      <a
+        key={link.label}
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-accent transition-colors"
+      >
+        {link.label}
+      </a>
+    ) : (
+      <Link key={link.label} href={link.href} className="hover:text-accent transition-colors">
+        {link.label}
+      </Link>
+    )
+
   return (
     <footer className="mt-24 pt-12 pb-12">
       <div className="max-w-2xl mx-auto px-6">
@@ -48,40 +87,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-[var(--footer-link)] text-center">
-          <Link href="/about" className="hover:text-accent transition-colors">
-            About
-          </Link>
-          <a href="/rss.xml" className="hover:text-accent transition-colors">
-            RSS
-          </a>
-          <Link href="/archive" className="hover:text-accent transition-colors">
-            Archive
-          </Link>
-          <a
-            href="https://instagram.com/utkarshsingx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition-colors"
-          >
-            Instagram
-          </a>
-          <a
-            href="https://www.linkedin.com/in/utkarshsingx/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition-colors"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/utkarshsingx/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition-colors"
-          >
-            GitHub
-          </a>
+        <div className="text-sm text-[var(--footer-link)] text-center space-y-1">
+          <div className="flex justify-center gap-x-4">{firstRowLinks.map(renderLink)}</div>
+          {secondRowLinks.length > 0 && (
+            <div className="flex justify-center gap-x-4">{secondRowLinks.map(renderLink)}</div>
+          )}
         </div>
 
         <div className="flex justify-center mt-32 mb-32">
