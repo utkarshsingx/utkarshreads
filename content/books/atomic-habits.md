@@ -5,6 +5,7 @@ year: 2024
 genre: ["Productivity", "Self-Help"]
 rating: 3.5
 cover: "/images/covers/deep-work-cover.jpg"
+hidden: true
 ---
 
 # Atomic Habits by James Clear

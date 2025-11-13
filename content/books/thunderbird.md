@@ -5,6 +5,7 @@ year: 2025
 genre: ["Science Fiction", "Thriller"]
 rating: 4
 cover: "/placeholder.svg?height=400&width=300"
+hidden: true
 ---
 
 Wendig creates a believable near-future world where technology and humanity collide in unexpected ways. The attention to detail in the technological aspects never feels overwhelming or preachy.

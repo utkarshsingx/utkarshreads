@@ -26,6 +26,7 @@ export interface BookData {
   rating: number
   content: string
   cover?: string
+  hidden?: boolean
 }
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
@@ -119,7 +120,7 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
   }
 }
 
-export async function getAllBooks(): Promise<BookData[]> {
+export async function getAllBooks(options?: { includeHidden?: boolean }): Promise<BookData[]> {
   const fileNames = fs.readdirSync(booksDirectory)
   const allBooksData = await Promise.all(
     fileNames.map(async (fileName) => {
@@ -131,14 +132,26 @@ export async function getAllBooks(): Promise<BookData[]> {
         .use(html)
         .process(matterResult.content)
       const contentHtml = processedContent.toString()
+      const data = matterResult.data as {
+        title: string
+        author: string
+        year: number
+        genre: string[]
+        rating: number
+        cover?: string
+        hidden?: boolean
+      }
+
       return {
         slug,
         content: contentHtml,
-        ...(matterResult.data as { title: string; author: string; year: number; genre: string[]; rating: number; cover?: string }),
+        ...data,
+        hidden: data.hidden ?? false,
       }
     }),
   )
-  return allBooksData.sort((a, b) => b.year - a.year)
+  const filteredBooks = options?.includeHidden ? allBooksData : allBooksData.filter((book) => !book.hidden)
+  return filteredBooks.sort((a, b) => b.year - a.year)
 }
 
 export async function getBookBySlug(slug: string): Promise<BookData | null> {
@@ -152,10 +165,21 @@ export async function getBookBySlug(slug: string): Promise<BookData | null> {
     .use(html)
     .process(matterResult.content)
   const content = processedContent.toString()
+  const data = matterResult.data as {
+    title: string
+    author: string
+    year: number
+    genre: string[]
+    rating: number
+    cover?: string
+    hidden?: boolean
+  }
+
   return {
     slug,
     content,
-    ...(matterResult.data as { title: string; author: string; year: number; genre: string[]; rating: number; cover?: string }),
+    ...data,
+    hidden: data.hidden ?? false,
   }
 }
 

@@ -5,6 +5,7 @@ year: 2024
 genre: ["Productivity", "Business"]
 rating: 5
 cover: "/placeholder.svg?height=400&width=300"
+hidden: true
 ---
 
 # Deep Work by Cal Newport
