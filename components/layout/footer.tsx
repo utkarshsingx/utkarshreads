@@ -48,10 +48,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex justify-center space-x-6 text-sm text-muted-foreground">
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-[var(--footer-link)] text-center">
           <Link href="/about" className="hover:text-accent transition-colors">
             About
           </Link>
+          <a href="/rss.xml" className="hover:text-accent transition-colors">
+            RSS
+          </a>
           <Link href="/archive" className="hover:text-accent transition-colors">
             Archive
           </Link>
@@ -64,12 +67,20 @@ export function Footer() {
             Instagram
           </a>
           <a
-            href="https://linkedin.com/utkarshsingx"
+            href="https://www.linkedin.com/in/utkarshsingx/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-accent transition-colors"
           >
             LinkedIn
+          </a>
+          <a
+            href="https://github.com/utkarshsingx/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent transition-colors"
+          >
+            GitHub
           </a>
         </div>
 

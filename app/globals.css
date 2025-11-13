@@ -27,6 +27,7 @@
   --year-heading: #7d7165; /* Color for year headings and counts */
   --divider-color: #1e1e1d; /* Color for dividers and separators */
   --dotted-border: #282726; /* Color for dotted borders */
+  --footer-link: #7d7165; /* Footer navigation links */
   --destructive: #dc2626;
   --destructive-foreground: #b9b7a4;
   --border: #2a2926;
@@ -96,6 +97,7 @@
   --color-year-heading: var(--year-heading);
   --color-divider-color: var(--divider-color);
   --color-dotted-border: var(--dotted-border);
+  --color-footer-link: var(--footer-link);
 }
 
 @layer base {
