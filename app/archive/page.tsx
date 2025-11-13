@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/header"
 import Link from "next/link"
 
 export default async function ArchivePage() {
-  const posts = await getAllPosts()
+  const posts = await getAllPosts(undefined, { includeHidden: true })
 
   const postsByYear = posts.reduce(
     (acc, post) => {

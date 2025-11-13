@@ -4,6 +4,7 @@ date: "2024-07-10"
 excerpt: "Nobody talks about winning and still feeling empty."
 tags: ["Reality", "Work", "Mental Health"]
 featured: false
+hidden: true
 ---
 
 You get the job.  

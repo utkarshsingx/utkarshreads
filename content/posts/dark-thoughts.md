@@ -4,6 +4,7 @@ date: "2024-08-12"
 excerpt: "Sometimes it’s not about wanting to die. It’s about wanting a pause button."
 tags: ["Mental Health", "Taboo", "Reality"]
 featured: false
+hidden: true
 ---
 
 People imagine suicidal thoughts as constant drama.  

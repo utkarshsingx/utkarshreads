@@ -4,6 +4,7 @@ date: "2024-01-10"
 excerpt: "Sometimes the most growth comes from challenging our own deeply held beliefs and assumptions."
 tags: ["Philosophy", "Mental Health", "Growth"]
 featured: true
+hidden: true
 ---
 
 Growth often requires us to challenge our most fundamental assumptions about ourselves and the world around us.

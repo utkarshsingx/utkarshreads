@@ -4,6 +4,7 @@ date: "2025-10-02"
 excerpt: "A gifted creator, fluent in code, music, and philosophy, discovers how brilliance can decay into sin—and how each hunger drags him deeper into chaos."  
 tags: ["Philosophy", "Creativity", "Dark Fiction", "Self-Destruction"]  
 featured: false  
+hidden: true
 image: "/placeholder.jpg"  
 imageAlt: "A lone figure surrounded by shadows of the seven deadly sins"  
 ---

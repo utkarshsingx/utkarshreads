@@ -4,6 +4,7 @@ date: "2024-08-01"
 excerpt: "Sometimes the people you cheer for are the same ones you envy."
 tags: ["Taboo", "Jealousy", "Honesty"]
 featured: false
+hidden: true
 ---
 
 Nobody wants to admit this:  

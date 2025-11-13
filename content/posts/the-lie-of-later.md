@@ -4,6 +4,7 @@ date: "2024-05-01"
 excerpt: "Later is the softest way to say never."
 tags: ["Life", "Reality", "Time"]
 featured: false
+hidden: true
 ---
 
 We tell ourselves we’ll do it later.  

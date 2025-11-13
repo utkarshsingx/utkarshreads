@@ -4,6 +4,7 @@ date: "2024-09-01"
 excerpt: "Being surrounded doesn’t mean being seen."
 tags: ["Loneliness", "Truth", "Mental Health"]
 featured: false
+hidden: true
 ---
 
 There’s a loneliness that’s worse than being alone—  

@@ -4,6 +4,7 @@ date: "2024-08-20"
 excerpt: "Some people burn you and you still stand too close to the fire."
 tags: ["Relationships", "Truth", "Pain"]
 featured: false
+hidden: true
 ---
 
 You know better.  

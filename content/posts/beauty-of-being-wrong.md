@@ -4,6 +4,7 @@ date: "2024-03-15"
 excerpt: "Mistakes are not failures—they are hidden invitations to see the world differently."
 tags: ["Perspective", "Philosophy", "Self-Discovery"]
 featured: false
+hidden: true
 image: "/placeholder.jpg"
 imageAlt: "A person reflecting on a mistake, surrounded by light"
 ---

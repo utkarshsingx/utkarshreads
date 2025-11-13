@@ -4,6 +4,7 @@ date: "2025-10-04"
 excerpt: "I don’t just listen to music—I inhabit it. Each note is a door, each rhythm a heartbeat, each lyric a borrowed soul."  
 tags: ["Music", "Poetry", "Me"]  
 featured: true  
+hidden: true
 image: "/placeholder.jpg"  
 imageAlt: "A figure dissolving into waves of sound"  
 ---

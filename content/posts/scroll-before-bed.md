@@ -4,6 +4,7 @@ date: "2024-09-10"
 excerpt: "It’s not insomnia. It’s escape."
 tags: ["Reality", "Habits", "Mental Health"]
 featured: true
+hidden: true
 ---
 
 You’re not scrolling Instagram at 1:47 a.m. because the videos are good.  

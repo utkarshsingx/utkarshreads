@@ -4,6 +4,7 @@ date: "2024-04-02"
 excerpt: "Life is not just the sound we make, but the quiet we leave behind."
 tags: ["Poetry", "Life", "Reflection"]
 featured: false
+hidden: true
 ---
 
 Music is not made of notes.  

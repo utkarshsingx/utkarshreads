@@ -4,6 +4,7 @@ date: "2024-04-21"
 excerpt: "The universe hides its meaning in things too ordinary to notice."
 tags: ["Poetry", "Existence", "Wonder"]
 featured: false
+hidden: true
 ---
 
 We wait for lightning to strike,  

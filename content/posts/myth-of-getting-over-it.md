@@ -4,6 +4,7 @@ date: "2024-06-15"
 excerpt: "You don’t get over it. You get around it."
 tags: ["Mental Health", "Reality", "Survival"]
 featured: true
+hidden: true
 ---
 
 People ask, “Have you gotten over it yet?”  

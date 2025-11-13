@@ -4,6 +4,7 @@ date: "2025-10-24"
 excerpt: "This is my personal space. Read my thoughts."
 tags: ["Personal"]
 featured: true
+hidden: false
 ---
 
 Hello stranger, if you got till here, oh well. This is my personal space. Here, I will write and share everything I can with you, but it is still in development. I have so much content to give, but I tend to be ill lately and can't focus.

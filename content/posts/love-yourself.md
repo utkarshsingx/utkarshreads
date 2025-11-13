@@ -4,6 +4,7 @@ date: "2025-07-05"
 excerpt: "Self-compassion is not indulgence—it’s the foundation of resilience, balance, and meaningful connection."
 tags: ["Mental Health", "Self-Care", "Growth"]
 featured: false
+hidden: true
 ---
 
 Loving yourself is not about ego or arrogance—it’s about building a steady relationship with the one person you’ll spend your entire life with: you.

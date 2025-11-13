@@ -4,6 +4,7 @@ date: "2024-07-18"
 excerpt: "Not all inheritances are money. Some are wounds."
 tags: ["Family", "Trauma", "Life"]
 featured: true
+hidden: true
 ---
 
 Some people inherit houses.  

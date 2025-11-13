@@ -14,6 +14,7 @@ export interface PostData {
   featured?: boolean
   image?: string
   imageAlt?: string
+  hidden?: boolean
 }
 
 export interface BookData {
@@ -31,7 +32,10 @@ const postsDirectory = path.join(process.cwd(), 'content/posts')
 const booksDirectory = path.join(process.cwd(), 'content/books')
 export const postsPerPage = 5
 
-export async function getAllPosts(page?: number): Promise<PostData[]> {
+export async function getAllPosts(
+  page?: number,
+  options?: { includeHidden?: boolean },
+): Promise<PostData[]> {
   const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData = await Promise.all(
     fileNames.map(async (fileName) => {
@@ -45,17 +49,28 @@ export async function getAllPosts(page?: number): Promise<PostData[]> {
       const contentHtml = processedContent.toString()
       
       // Ensure tags is always an array
-      const data = matterResult.data as { title: string; date: string; excerpt: string; tags?: string[]; featured?: boolean, image?: string, imageAlt?: string }
+      const data = matterResult.data as {
+        title: string
+        date: string
+        excerpt: string
+        tags?: string[]
+        featured?: boolean
+        image?: string
+        imageAlt?: string
+        hidden?: boolean
+      }
       
       return {
         slug,
         content: contentHtml,
         ...data,
         tags: data.tags || [], // Default to empty array if tags are missing
+        hidden: data.hidden ?? false,
       }
     }),
   )
-  const sortedPosts = allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))
+  const filteredPosts = options?.includeHidden ? allPostsData : allPostsData.filter((post) => !post.hidden)
+  const sortedPosts = filteredPosts.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   if (page) {
     const startIndex = (page - 1) * postsPerPage
@@ -66,9 +81,9 @@ export async function getAllPosts(page?: number): Promise<PostData[]> {
   return sortedPosts
 }
 
-export async function getTotalPostPages() {
-  const fileNames = fs.readdirSync(postsDirectory)
-  return Math.ceil(fileNames.length / postsPerPage)
+export async function getTotalPostPages(options?: { includeHidden?: boolean }) {
+  const posts = await getAllPosts(undefined, options)
+  return Math.ceil(posts.length / postsPerPage)
 }
 
 export async function getPostBySlug(slug: string): Promise<PostData | null> {
@@ -84,13 +99,23 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
   const content = processedContent.toString()
 
   // Ensure tags is always an array
-  const data = matterResult.data as { title: string; date: string; excerpt: string; tags?: string[]; featured?: boolean, image?: string, imageAlt?: string }
+  const data = matterResult.data as {
+    title: string
+    date: string
+    excerpt: string
+    tags?: string[]
+    featured?: boolean
+    image?: string
+    imageAlt?: string
+    hidden?: boolean
+  }
   
   return {
     slug,
     content,
     ...data,
     tags: data.tags || [], // Default to empty array if tags are missing
+    hidden: data.hidden ?? false,
   }
 }
 
