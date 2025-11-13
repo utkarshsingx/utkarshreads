@@ -38,6 +38,7 @@ A chef?
 An entrepreneur?  
 A restaurant at hill station with library?  
 Longing for someone--?   
+Yeah, life is a dream.
 
 Keep on dreaming.   
 
