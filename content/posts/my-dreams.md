@@ -1,9 +1,9 @@
 ---
 title: "My Dreams"
-date: "2025-11-13"
+date: "2025-11-11"
 excerpt: "I want to live inside my own dream, not someone else's."
 tags: ["Music", "Personal"]
-featured: false
+featured: true
 hidden: false
 backgroundVideo: "/backgrounds/my-dreams/SOMEONE ELSE S DREAM (by Absofacto) [Official Music Video].mp4"
 textTone: "light"
@@ -23,21 +23,24 @@ Keep on dreaming.
 Delulu is a solulu?   
 Really? Maybe.   
 Maybe not.  
-Or maybe the only solution is the courage to imagine.  
+Or maybe the only solution is the courage  
+to imagine.  
 
 My dream?   
 Author's?   
-Does he knows it yet?   
-Maybe a author at 25?  
+Does he know it yet?   
+Maybe publish his book at 25?  
 
 Dream big Dreamer.  
 
 An artist? Yeah, that can work.  
-Musician? You bet! But his voice?  
-A chef?   
-An entrepreneur?  
-A restaurant at hill station with library?  
+Musician? You bet! But his voice?    
+A chef? But he cuts his fingers.  
+An entrepreneur? 
+A restaurant at hill station  
+with library?  
 Longing for someone--?   
+..  
 Yeah, life is a dream.
 
 Keep on dreaming.   
@@ -56,5 +59,5 @@ But how do you know that?
 Dream big Dreamer.  
 because they say,   
 It is never too late to be what you might have been,   
-always wanted to be. 
+always wanted to be.  
 So keep on dreaming. 

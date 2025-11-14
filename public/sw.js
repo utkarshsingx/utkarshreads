@@ -4,7 +4,7 @@ const urlsToCache = [
   '/about',
   '/library',
   '/archive',
-  '/globals.css',
+  // '/globals.css',
   '/images/header_blank.png',
   '/images/header_books.png',
   '/images/header_laptop.png'
