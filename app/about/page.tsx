@@ -27,24 +27,14 @@ export default function AboutPage() {
 
       <div className="text-center space-y-4 pt-8">
         <div className="flex justify-center space-x-6 text-sm">
-          <a href="mailto:hauntedutkarsh@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">
+          <a href="https://bento.me/utkarshsingx" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+            Bento
+          </a>
+          <a href="mailto:utkarshsingx@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">
             Email
           </a>
-          <a
-            href="https://github.com/utkarshsingx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-accent transition-colors"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com/utkarshsingx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-accent transition-colors"
-          >
-            LinkedIn
+          <a href="https://x.com/utkarshsingx" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+            Twitter
           </a>
         </div>
       </div>
