@@ -2,7 +2,7 @@
   <img src="public/images/header_blank.png" width="144" alt="Utkarsh Reads logo" />
 
   # Utkarsh Reads
-  _A digital studio of my thoughts, notes, book reviews and much more.._
+  _Gatekeeping here. Made a digital studio of my thoughts, book reviews and much more.._
 
   [![Website](https://img.shields.io/badge/visit-utkarshreads.me-1E1915)](https://www.utkarshreads.me)
   [![License](https://img.shields.io/badge/license-MIT-8A8875.svg)](#license)
