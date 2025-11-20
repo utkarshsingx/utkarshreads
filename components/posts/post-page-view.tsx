@@ -70,9 +70,9 @@ export function PostPageView({ post }: PostPageViewProps) {
 
     if (!originalStyles.current) {
       originalStyles.current = {
-        bodyBackground: document.body.style.backgroundColor,
-        rootBackground: rootContainer?.style.backgroundColor,
-        sidebarBackground: sidebar?.style.backgroundColor,
+        bodyBackground: document.body.style.backgroundColor || "#100f0f",
+        rootBackground: rootContainer?.style.backgroundColor || "#100f0f",
+        sidebarBackground: sidebar?.style.backgroundColor || "#100f0f",
       }
     }
 
@@ -82,28 +82,40 @@ export function PostPageView({ post }: PostPageViewProps) {
       }
       document.body.style.backgroundColor = originalStyles.current.bodyBackground
       if (rootContainer) {
-        rootContainer.style.backgroundColor = originalStyles.current.rootBackground ?? ""
+        rootContainer.style.backgroundColor = originalStyles.current.rootBackground ?? "#100f0f"
       }
       if (sidebar) {
-        sidebar.style.backgroundColor = originalStyles.current.sidebarBackground ?? ""
+        sidebar.style.backgroundColor = originalStyles.current.sidebarBackground ?? "#100f0f"
       }
       html.classList.remove("post-video-mode-light", "post-video-mode-dark")
     }
 
     if (backgroundSrc && !videoFailed) {
-      document.body.style.backgroundColor = "transparent"
-      if (rootContainer) {
-        rootContainer.style.backgroundColor = "transparent"
-      }
-      if (sidebar) {
-        sidebar.style.backgroundColor = "transparent"
-      }
-      if (post.textTone === "light") {
-        html.classList.add("post-video-mode-light")
-        html.classList.remove("post-video-mode-dark")
+      // Set to transparent only when video is loaded and visible
+      if (videoLoaded) {
+        document.body.style.backgroundColor = "transparent"
+        if (rootContainer) {
+          rootContainer.style.backgroundColor = "transparent"
+        }
+        if (sidebar) {
+          sidebar.style.backgroundColor = "transparent"
+        }
+        if (post.textTone === "light") {
+          html.classList.add("post-video-mode-light")
+          html.classList.remove("post-video-mode-dark")
+        } else {
+          html.classList.add("post-video-mode-dark")
+          html.classList.remove("post-video-mode-light")
+        }
       } else {
-        html.classList.add("post-video-mode-dark")
-        html.classList.remove("post-video-mode-light")
+        // Keep original dark background while video is loading
+        document.body.style.backgroundColor = originalStyles.current.bodyBackground
+        if (rootContainer) {
+          rootContainer.style.backgroundColor = originalStyles.current.rootBackground ?? "#100f0f"
+        }
+        if (sidebar) {
+          sidebar.style.backgroundColor = originalStyles.current.sidebarBackground ?? "#100f0f"
+        }
       }
     } else {
       restore()

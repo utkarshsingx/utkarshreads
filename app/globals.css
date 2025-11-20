@@ -36,6 +36,7 @@
   --divider-color: #1e1e1d; /* Color for dividers and separators */
   --dotted-border: #282726; /* Color for dotted borders */
   --footer-link: #7d7165; /* Footer navigation links */
+  --quote-color: #7d7165; /* Quote text color */
   --destructive: #dc2626;
   --destructive-foreground: #b9b7a4;
   --border: #2a2926;
@@ -180,11 +181,12 @@
     margin: 2.5rem 0;
     font-family: "Copernicus Book Italic", "EB Garamond", Georgia, serif;
     font-style: italic;
-    color: #1e1915;
+    color: var(--quote-color);
   }
 
   .prose blockquote p {
     margin-bottom: 0;
+    color: var(--quote-color);
   }
 
   .prose ul,

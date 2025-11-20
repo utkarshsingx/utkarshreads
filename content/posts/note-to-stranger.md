@@ -13,4 +13,4 @@ I will try to put everything I know here. I want this space to hold my thoughts,
 
 > "The role of the artist is exactly the same as the role of the lover. If I love you, I have to make you conscious of the things you don’t see."
 
-So, take care of yourselves and read my thoughts. Let me know if you realate with them or don't if you're introvert like me, I'm okay if it helps in any manner. Just read them. Have a cheerful day!
+So, take care of yourselves and read my thoughts. Let me know if you realate with them, I'll be happy if it helps in any manner. Have a cheerful day!
