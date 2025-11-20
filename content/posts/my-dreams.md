@@ -5,7 +5,7 @@ excerpt: "I want to live inside my own dream, not someone else's."
 tags: ["Music", "Personal"]
 featured: true
 hidden: false
-backgroundVideo: "/backgrounds/my-dreams/SOMEONE ELSE S DREAM (by Absofacto) [Official Music Video].mp4"
+backgroundVideo: "https://res.cloudinary.com/dawxgroba/video/upload/v1763604830/SOMEONE_ELSE_S_DREAM_by_Absofacto_Official_Music_Video_xfzphp.mp4"
 textTone: "light"
 ---
 
