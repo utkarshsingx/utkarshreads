@@ -39,7 +39,17 @@ export async function getAllPosts(
   page?: number,
   options?: { includeHidden?: boolean },
 ): Promise<PostData[]> {
-  const fileNames = fs.readdirSync(postsDirectory)
+  if (!fs.existsSync(postsDirectory)) {
+    return []
+  }
+  
+  const fileNames = fs.readdirSync(postsDirectory).filter(
+    (fileName) => fileName.endsWith('.md') && !fileName.startsWith('.')
+  )
+  
+  if (fileNames.length === 0) {
+    return []
+  }
   const allPostsData = await Promise.all(
     fileNames.map(async (fileName) => {
       const slug = fileName.replace(/\.md$/, '')
@@ -131,7 +141,18 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
 }
 
 export async function getAllBooks(options?: { includeHidden?: boolean }): Promise<BookData[]> {
-  const fileNames = fs.readdirSync(booksDirectory)
+  if (!fs.existsSync(booksDirectory)) {
+    return []
+  }
+  
+  const fileNames = fs.readdirSync(booksDirectory).filter(
+    (fileName) => fileName.endsWith('.md') && !fileName.startsWith('.')
+  )
+  
+  if (fileNames.length === 0) {
+    return []
+  }
+  
   const allBooksData = await Promise.all(
     fileNames.map(async (fileName) => {
       const slug = fileName.replace(/\.md$/, '')
