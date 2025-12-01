@@ -54,35 +54,38 @@ export async function GET() {
     description:
       "About Utkarsh Singh — designer, developer, and artist sharing thoughts, notes, and projects.",
     content: `
-      <p>Yahaha, you found me! I'm Utkarsh Singh, a designer & developer building digital products — and an artist at heart.</p>
-      <p>This is the corner of the internet where I share my thoughts, explorations, and the things I learn along the way.</p>
-      <p>Say hello at <a href="mailto:hauntedutkarsh@gmail.com">hauntedutkarsh@gmail.com</a>.</p>
+      <p>Yahaha, you found me! I'm Utkarsh Singh, a designer and developer for digital products, an artist in real life.</p>
+      <p>Beyond my artistic focus, I have equal fascination towards music, philosophy, literature, poems, novels, technology, creative content, and psychology.</p>
+      <p>Some takes on life: time is not rigid, rest till you feel guilty and then rest a bit more, sunscreen always works, stretch, electrolytes are essential while fasting, pain ≠ great art, great art = repetition, be kind, be observant.</p>
+      <p>Only goal for the year: consume less media, more music, and clothing. and go for that 42.195.</p>
+      <p>This blog is the corner of the internet in which I share my thoughts. That's it. That's the whole concept.</p>
+      <p>Connect with me: <a href="https://bento.me/utkarshsingx">Bento</a>, <a href="mailto:utkarshsingx@gmail.com">Email</a>, <a href="https://x.com/utkarshsingx">Twitter</a></p>
     `,
   })
 
   const itemsXml = rssItems
     .sort((a, b) => b.date.getTime() - a.date.getTime())
     .map(
-      (item) => `    <item>
-      <title><![CDATA[${item.title}]]></title>
-      <pubDate>${item.date.toUTCString()}</pubDate>
-      <link>${item.link}</link>
-      <guid isPermaLink="true">${item.guid}</guid>
-      <description><![CDATA[${item.description}]]></description>
-      <content:encoded><![CDATA[${item.content}]]></content:encoded>
-    </item>`,
+      (item) => `  <item>
+    <title><![CDATA[${item.title}]]></title>
+    <pubDate>${item.date.toUTCString()}</pubDate>
+    <link>${item.link}</link>
+    <guid isPermaLink="true">${item.guid}</guid>
+    <description><![CDATA[${item.description}]]></description>
+    <content:encoded><![CDATA[${item.content}]]></content:encoded>
+  </item>`,
     )
     .join("\n")
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
-<channel>
-  <title>${siteTitle}</title>
-  <description>${siteDescription}</description>
-  <link>${siteUrl}</link>
-  <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/rss/1.0/modules/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
+  <channel>
+    <title>${siteTitle}</title>
+    <description>${siteDescription}</description>
+    <link>${siteUrl}</link>
+    <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />
 ${itemsXml}
-</channel>
+  </channel>
 </rss>`
 
   return new Response(rss, {
@@ -96,4 +99,3 @@ ${itemsXml}
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, "")
 }
-
