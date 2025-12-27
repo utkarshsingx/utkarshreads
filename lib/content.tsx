@@ -4,6 +4,11 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
 
+export interface SyncedLyric {
+  time: string
+  text: string
+}
+
 export interface PostData {
   slug: string
   title: string
@@ -17,6 +22,7 @@ export interface PostData {
   backgroundVideo?: string
   textTone?: "light" | "dark"
   hidden?: boolean
+  syncedLyrics?: SyncedLyric[]
 }
 
 export interface BookData {
@@ -34,6 +40,21 @@ export interface BookData {
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 const booksDirectory = path.join(process.cwd(), 'content/books')
 export const postsPerPage = 5
+
+/**
+ * Process content to replace [lyric id="X"]...[/lyric] syntax with HTML elements
+ * that have data attributes for syncing with video playback
+ */
+function processLyricsSyntax(htmlContent: string): string {
+  const lyricRegex = /\[lyric\s+id="(\d+)"\]([\s\S]*?)\[\/lyric\]/g
+  return htmlContent.replace(lyricRegex, (match, id, text) => {
+    const escapedText = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+    return `<span class="synced-lyric" data-lyric-id="${id}">${escapedText}</span>`
+  })
+}
 
 export async function getAllPosts(
   page?: number,
@@ -59,7 +80,7 @@ export async function getAllPosts(
       const processedContent = await remark()
         .use(html)
         .process(matterResult.content)
-      const contentHtml = processedContent.toString()
+      const contentHtml = processLyricsSyntax(processedContent.toString())
       
       // Ensure tags is always an array
       const data = matterResult.data as {
@@ -73,6 +94,7 @@ export async function getAllPosts(
         hidden?: boolean
         backgroundVideo?: string
         textTone?: "light" | "dark"
+        syncedLyrics?: SyncedLyric[]
       }
       
       return {
@@ -83,6 +105,7 @@ export async function getAllPosts(
         backgroundVideo: data.backgroundVideo,
         textTone: data.textTone,
         hidden: data.hidden ?? false,
+        syncedLyrics: data.syncedLyrics || [],
       }
     }),
   )
@@ -113,7 +136,7 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content)
-  const content = processedContent.toString()
+  const content = processLyricsSyntax(processedContent.toString())
 
   // Ensure tags is always an array
   const data = matterResult.data as {
@@ -127,6 +150,7 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
     hidden?: boolean
     backgroundVideo?: string
     textTone?: "light" | "dark"
+    syncedLyrics?: SyncedLyric[]
   }
   
   return {
@@ -137,6 +161,7 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
     backgroundVideo: data.backgroundVideo,
     textTone: data.textTone,
     hidden: data.hidden ?? false,
+    syncedLyrics: data.syncedLyrics || [],
   }
 }
 

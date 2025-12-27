@@ -9,6 +9,7 @@ import { AnimatedHeader } from "@/components/animated-header"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Header } from "@/components/layout/header"
+import { SyncedLyrics } from "@/components/posts/synced-lyrics"
 
 interface PostPageViewProps {
   post: PostData
@@ -91,7 +92,6 @@ export function PostPageView({ post }: PostPageViewProps) {
     }
 
     if (backgroundSrc && !videoFailed) {
-      // Set to transparent only when video is loaded and visible
       if (videoLoaded) {
         document.body.style.backgroundColor = "transparent"
         if (rootContainer) {
@@ -108,7 +108,6 @@ export function PostPageView({ post }: PostPageViewProps) {
           html.classList.remove("post-video-mode-light")
         }
       } else {
-        // Keep original dark background while video is loading
         document.body.style.backgroundColor = originalStyles.current.bodyBackground
         if (rootContainer) {
           rootContainer.style.backgroundColor = originalStyles.current.rootBackground ?? "#100f0f"
@@ -161,6 +160,9 @@ export function PostPageView({ post }: PostPageViewProps) {
               className="fixed inset-0 -z-10 pointer-events-none bg-black/35"
               aria-hidden="true"
             />
+          )}
+          {post.syncedLyrics && post.syncedLyrics.length > 0 && (
+            <SyncedLyrics videoRef={videoRef} lyrics={post.syncedLyrics} />
           )}
         </>
       )}
