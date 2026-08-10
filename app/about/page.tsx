@@ -249,7 +249,7 @@ export default function AboutPage() {
                 alt="Utkarsh Singh"
                 className="w-full h-auto rounded-lg"
               />
-              <p className="text-left">This is my face and main character Roxy's whole body :p</p>
+              <p className="text-left">this is me with shirt i like ;)</p>
             </div>
 
             <p>
