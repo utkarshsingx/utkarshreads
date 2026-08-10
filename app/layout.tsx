@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { Sidebar } from "@/components/layout/sidebar"
 import { Footer } from "@/components/layout/footer"
+import { CipherProvider } from "@/components/providers/cipher-provider"
 import { Suspense } from "react"
 import "./globals.css"
 
@@ -26,19 +27,21 @@ export default async function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="font-serif">
-        <div className="min-h-screen bg-background text-foreground">
-          <Sidebar />
-          <main className="flex justify-center lg:pl-40">
-            <div className="max-w-lg w-full px-6 pt-[18px] pb-8">
-              <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
-            </div>
-          </main>
-          <div className="flex justify-center lg:pl-40">
-            <div className="max-w-xl w-full">
-              <Footer />
+        <CipherProvider>
+          <div className="min-h-screen bg-background text-foreground">
+            <Sidebar />
+            <main className="flex justify-center lg:pl-40">
+              <div className="max-w-lg w-full px-6 pt-[18px] pb-8">
+                <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+              </div>
+            </main>
+            <div className="flex justify-center lg:pl-40">
+              <div className="max-w-xl w-full">
+                <Footer />
+              </div>
             </div>
           </div>
-        </div>
+        </CipherProvider>
         <Analytics />
         <script
           dangerouslySetInnerHTML={{

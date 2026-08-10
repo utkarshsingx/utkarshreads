@@ -229,6 +229,19 @@
   }
 }
 
+/* Morse and binary produce runs with no natural break points. Without this
+   a single encoded heading pushes the page into horizontal scroll. */
+.cipher-active body {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.cipher-active h1,
+.cipher-active h2,
+.cipher-active h3 {
+  line-height: 1.35;
+}
+
 /* ---------------------------------------------------------------- *
  * Art gallery
  * ---------------------------------------------------------------- */

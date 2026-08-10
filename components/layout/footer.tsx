@@ -4,6 +4,8 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useCipher } from "@/components/providers/cipher-provider"
+import { cipherModes, type CipherMode } from "@/lib/cipher"
 
 type FooterLink = {
   label: string
@@ -23,7 +25,7 @@ const footerLinks: FooterLink[] = [
 ]
 
 export function Footer() {
-  const [selectedLanguage, setSelectedLanguage] = useState("all")
+  const { mode, setMode } = useCipher()
   const [isVisible, setIsVisible] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
 
@@ -73,17 +75,22 @@ export function Footer() {
   return (
     <footer className="mt-24 pt-12 pb-12">
       <div className="max-w-2xl mx-auto px-6">
-        <div className="mb-8">
+        {/* Skipped by the cipher: whatever the rest of the page turns into,
+            this control has to stay readable enough to switch back. */}
+        <div className="mb-8" data-cipher-skip>
           <div className="flex items-center justify-center space-x-4 text-sm">
             <span className="text-muted-foreground">Language:</span>
-            <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-              <SelectTrigger className="w-24">
-                <SelectValue placeholder="All selected" />
+            <Select value={mode} onValueChange={(value) => setMode(value as CipherMode)}>
+              <SelectTrigger className="w-28">
+                <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All</SelectItem>
-                <SelectItem value="english">English</SelectItem>
-                <SelectItem value="hindi">Hindi</SelectItem>
+              {/* Portals out to <body>, so it needs its own marker. */}
+              <SelectContent data-cipher-skip>
+                {cipherModes.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
