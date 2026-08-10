@@ -36,20 +36,20 @@ export function Sidebar() {
           About
         </Link>
         <Link
-          href="/library"
-          className={`text-3xl font-serif transition-colors font-bold ${
-            isActive("/library") ? "text-accent" : "text-foreground hover:text-[var(--hover-color)]"
-          }`}
-        >
-          Library
-        </Link>
-        <Link
           href="/art"
           className={`text-3xl font-serif transition-colors font-bold ${
             isActive("/art") ? "text-accent" : "text-foreground hover:text-[var(--hover-color)]"
           }`}
         >
           Gallery
+        </Link>
+        <Link
+          href="/library"
+          className={`text-3xl font-serif transition-colors font-bold ${
+            isActive("/library") ? "text-accent" : "text-foreground hover:text-[var(--hover-color)]"
+          }`}
+        >
+          Library
         </Link>
       </nav>
     </aside>

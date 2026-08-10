@@ -63,14 +63,11 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
         </p>
       </div>
 
-      {/* Break out of the narrow reading column so the piece is actually visible. */}
-      <div className="lg:-mx-24">
-        <img
-          src={artwork.image}
-          alt={artwork.title}
-          className="w-full h-auto rounded-sm"
-        />
-      </div>
+      <img
+        src={artwork.image}
+        alt={artwork.title}
+        className="w-full h-auto rounded-sm"
+      />
 
       <blockquote className="art-detail-memory">{artwork.memory}</blockquote>
 
