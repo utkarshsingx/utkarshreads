@@ -44,7 +44,16 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               if ('serviceWorker' in navigator) {
+                var isLocalhost = ['localhost', '127.0.0.1', '[::1]'].indexOf(location.hostname) !== -1;
                 window.addEventListener('load', () => {
+                  if (isLocalhost) {
+                    // A cache-first worker in front of the dev server serves stale
+                    // chunks and breaks hydration. Unregister anything left over.
+                    navigator.serviceWorker.getRegistrations().then(regs => {
+                      regs.forEach(reg => reg.unregister());
+                    });
+                    return;
+                  }
                   navigator.serviceWorker.register('/sw.js').then(registration => {
                     console.log('SW registered: ', registration);
                   }).catch(registrationError => {
