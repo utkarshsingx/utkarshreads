@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: ArtworkPageProps): Promise<Me
   const { slug } = await params
   const artwork = getArtworkBySlug(slug)
 
-  if (!artwork) return { title: "Art — utkarshreads" }
+  if (!artwork) return { title: "Art Gallery — utkarshreads" }
 
   return {
     title: `${artwork.title} — utkarshreads`,
@@ -53,7 +53,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
           className="text-sm hover:text-accent transition-colors"
           style={{ color: "var(--muted-text)" }}
         >
-          ← Art
+          ← Gallery
         </Link>
 
         <h1 className="text-3xl text-balance mt-6 mb-3">{artwork.title}</h1>
@@ -109,7 +109,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
         <Link href="/art">
           <Button variant="ghost" size="sm" className="hover:bg-transparent hover:text-foreground hover:underline">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Art
+            Back to Gallery
           </Button>
         </Link>
       </div>

@@ -10,7 +10,7 @@ export function Header() {
     { name: "Posts", href: "/" },
     { name: "About", href: "/about" },
     { name: "Library", href: "/library" },
-    { name: "Art", href: "/art" },
+    { name: "Gallery", href: "/art" },
   ]
 
   return (

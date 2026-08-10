@@ -13,7 +13,7 @@ type FooterLink = {
 
 const footerLinks: FooterLink[] = [
   { label: "About", href: "/about" },
-  { label: "Art", href: "/art" },
+  { label: "Gallery", href: "/art" },
   { label: "RSS", href: "/rss.xml" },
   { label: "Archive", href: "/archive" },
   { label: "Instagram", href: "https://instagram.com/utkarshsingx", external: true },

@@ -49,7 +49,7 @@ export function Sidebar() {
             isActive("/art") ? "text-accent" : "text-foreground hover:text-[var(--hover-color)]"
           }`}
         >
-          Art
+          Gallery
         </Link>
       </nav>
     </aside>

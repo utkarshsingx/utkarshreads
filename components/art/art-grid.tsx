@@ -24,12 +24,7 @@ export function ArtGrid({ artworks }: ArtGridProps) {
             className="art-tile-image"
           />
 
-          <span className="art-tile-veil">
-            <span className="art-tile-memory">{artwork.memory}</span>
-            <span className="art-tile-meta">
-              {artwork.title} · {artwork.year}
-            </span>
-          </span>
+          <span className="art-tile-film" aria-hidden="true" />
         </Link>
       ))}
     </div>
