@@ -3,7 +3,7 @@
 import type React from "react"
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react"
 import type { CipherMode } from "@/lib/cipher"
-import { encode } from "@/lib/cipher"
+import { cipherModes, encode } from "@/lib/cipher"
 
 const STORAGE_KEY = "utkarshreads-language"
 
@@ -74,8 +74,10 @@ export function CipherProvider({ children }: { children: React.ReactNode }) {
   // Restore the last choice once the DOM exists. Deliberately not done during
   // render: the server always sends English, so hydration stays clean.
   useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY) as CipherMode | null
-    if (stored === "morse" || stored === "binary") setMode(stored)
+    const stored = window.localStorage.getItem(STORAGE_KEY)
+    if (stored && stored !== "en" && cipherModes.some((m) => m.value === stored)) {
+      setMode(stored as CipherMode)
+    }
   }, [])
 
   useEffect(() => {
