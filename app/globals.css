@@ -233,25 +233,8 @@
  * Art gallery
  * ---------------------------------------------------------------- */
 
-@keyframes art-tile-enter {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes art-tile-sweep {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(1100%);
-  }
-}
+/* No motion anywhere in here on purpose: no transitions, no transforms,
+   no shadows. Hovering swaps the tile to its memory, nothing else. */
 
 .art-tile {
   position: relative;
@@ -259,19 +242,12 @@
   isolation: isolate;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  border-radius: 2px;
   background-color: #161514;
-  animation: art-tile-enter 0.6s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-  transition: box-shadow 0.45s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
-.art-tile:hover,
 .art-tile:focus-visible {
-  outline: none;
-  transform: translateY(-3px);
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--accent) 55%, transparent),
-    0 18px 40px -18px color-mix(in srgb, var(--accent) 70%, transparent);
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
 }
 
 .art-tile-image {
@@ -280,104 +256,33 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.85) brightness(0.82) contrast(1.02);
-  transform: scale(1);
-  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1), filter 0.5s ease;
+  filter: saturate(0.85) brightness(0.82);
 }
 
 .art-tile:hover .art-tile-image,
 .art-tile:focus-visible .art-tile-image {
-  transform: scale(1.07);
-  filter: saturate(1) brightness(0.55) contrast(1.06);
+  filter: saturate(1) brightness(0.5);
 }
 
-/* Accent line that sweeps down the tile on hover, like a scanner pass. */
-.art-tile-scan {
-  position: absolute;
-  inset-inline: 0;
-  top: 0;
-  height: 1px;
-  opacity: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    color-mix(in srgb, var(--accent) 90%, transparent),
-    transparent
-  );
-  box-shadow: 0 0 12px 1px color-mix(in srgb, var(--accent) 60%, transparent);
-  pointer-events: none;
-}
-
-.art-tile:hover .art-tile-scan,
-.art-tile:focus-visible .art-tile-scan {
-  opacity: 1;
-  animation: art-tile-sweep 1.6s linear infinite;
-}
-
-/* Corner brackets that snap in around the image. */
-.art-tile-frame {
-  position: absolute;
-  inset: 6px;
-  pointer-events: none;
-}
-
-.art-tile-frame::before,
-.art-tile-frame::after {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  opacity: 0;
-  border-color: color-mix(in srgb, var(--accent) 85%, transparent);
-  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
-}
-
-.art-tile-frame::before {
-  top: 0;
-  left: 0;
-  border-top: 1px solid;
-  border-left: 1px solid;
-  transform: translate(-6px, -6px);
-}
-
-.art-tile-frame::after {
-  right: 0;
-  bottom: 0;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-  transform: translate(6px, 6px);
-}
-
-.art-tile:hover .art-tile-frame::before,
-.art-tile:hover .art-tile-frame::after,
-.art-tile:focus-visible .art-tile-frame::before,
-.art-tile:focus-visible .art-tile-frame::after {
-  opacity: 1;
-  transform: none;
-}
-
-/* The memory itself. */
 .art-tile-veil {
   position: absolute;
   inset: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: flex-end;
   gap: 0.4rem;
   padding: 0.85rem 0.85rem 0.9rem;
-  opacity: 0;
   background: linear-gradient(
     to top,
     rgba(10, 9, 9, 0.92) 0%,
     rgba(10, 9, 9, 0.6) 45%,
     rgba(10, 9, 9, 0.1) 100%
   );
-  transition: opacity 0.4s ease;
 }
 
 .art-tile:hover .art-tile-veil,
 .art-tile:focus-visible .art-tile-veil {
-  opacity: 1;
+  display: flex;
 }
 
 .art-tile-memory {
@@ -387,8 +292,6 @@
   line-height: 1.4;
   color: rgba(235, 233, 220, 0.95);
   text-wrap: balance;
-  transform: translateY(10px);
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1) 0.05s;
 }
 
 .art-tile-meta {
@@ -396,15 +299,6 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--accent) 80%, #d8d4c2);
-  transform: translateY(10px);
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1) 0.12s;
-}
-
-.art-tile:hover .art-tile-memory,
-.art-tile:hover .art-tile-meta,
-.art-tile:focus-visible .art-tile-memory,
-.art-tile:focus-visible .art-tile-meta {
-  transform: none;
 }
 
 @media (max-width: 640px) {
@@ -417,7 +311,7 @@
    memory, so the grid does not turn into a wall of text. */
 @media (hover: none) {
   .art-tile-veil {
-    opacity: 1;
+    display: flex;
     background: linear-gradient(
       to top,
       rgba(10, 9, 9, 0.8) 0%,
@@ -428,10 +322,6 @@
 
   .art-tile-memory {
     display: none;
-  }
-
-  .art-tile-meta {
-    transform: none;
   }
 }
 
@@ -446,21 +336,3 @@
   color: var(--quote-color);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .art-tile,
-  .art-tile-image,
-  .art-tile-memory,
-  .art-tile-meta,
-  .art-tile-frame::before,
-  .art-tile-frame::after {
-    animation: none !important;
-    transition-duration: 0.01ms !important;
-    transform: none !important;
-  }
-
-  .art-tile:hover .art-tile-scan,
-  .art-tile:focus-visible .art-tile-scan {
-    animation: none;
-    opacity: 0;
-  }
-}

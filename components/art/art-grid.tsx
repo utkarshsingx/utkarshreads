@@ -9,13 +9,12 @@ interface ArtGridProps {
 
 export function ArtGrid({ artworks }: ArtGridProps) {
   return (
-    <div className="art-grid grid grid-cols-2 sm:grid-cols-3 gap-1.5 sm:gap-2">
+    <div className="art-grid grid grid-cols-2 sm:grid-cols-3 gap-[2px]">
       {artworks.map((artwork, index) => (
         <Link
           key={artwork.slug}
           href={`/art/${artwork.slug}`}
-          className="art-tile group"
-          style={{ animationDelay: `${index * 60}ms` }}
+          className="art-tile"
           aria-label={`${artwork.title} — ${artwork.year}`}
         >
           <img
@@ -24,9 +23,6 @@ export function ArtGrid({ artworks }: ArtGridProps) {
             loading={index < 6 ? "eager" : "lazy"}
             className="art-tile-image"
           />
-
-          <span className="art-tile-scan" aria-hidden="true" />
-          <span className="art-tile-frame" aria-hidden="true" />
 
           <span className="art-tile-veil">
             <span className="art-tile-memory">{artwork.memory}</span>
