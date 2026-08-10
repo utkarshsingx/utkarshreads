@@ -245,7 +245,7 @@ export default function AboutPage() {
 
             <div className="flex flex-col items-start">
               <img
-                src="/images/itsme.png"
+                src="https://res.cloudinary.com/dawxgroba/image/upload/v1786329099/1F4951DF-76B2-4BDC-937F-E306BDD574C0_fxza4t.jpg"
                 alt="Utkarsh Singh"
                 className="w-full h-auto rounded-lg"
               />
