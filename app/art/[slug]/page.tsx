@@ -1,8 +1,9 @@
+import { Fragment } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
-import { artworks, getAdjacentArtworks, getArtworkBySlug } from "@/lib/art"
+import { artworks, getAdjacentArtworks, getArtworkBySlug, type StoryBlock } from "@/lib/art"
 import { AnimatedHeader } from "@/components/animated-header"
 import { Header } from "@/components/layout/header"
 import { Button } from "@/components/ui/button"
@@ -30,6 +31,39 @@ export async function generateMetadata({ params }: ArtworkPageProps): Promise<Me
       images: [artwork.image],
     },
   }
+}
+
+function StoryBlockView({ block }: { block: StoryBlock }) {
+  if (typeof block === "string") {
+    return <p>{block}</p>
+  }
+
+  if ("image" in block) {
+    return <img src={block.image} alt={block.alt} loading="lazy" className="w-full h-auto rounded-sm my-10" />
+  }
+
+  if ("list" in block) {
+    return (
+      <ol className="list-decimal pl-6">
+        {block.list.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ol>
+    )
+  }
+
+  return (
+    <blockquote>
+      <p>
+        {block.poem.map((line, index) => (
+          <Fragment key={index}>
+            {index > 0 && <br />}
+            {line}
+          </Fragment>
+        ))}
+      </p>
+    </blockquote>
+  )
 }
 
 export default async function ArtworkPage({ params }: ArtworkPageProps) {
@@ -72,35 +106,37 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
       <blockquote className="art-detail-memory">{artwork.memory}</blockquote>
 
       <article className="prose prose-lg text-left">
-        {artwork.story.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
+        {artwork.story.map((block, index) => (
+          <StoryBlockView key={index} block={block} />
         ))}
       </article>
 
-      <nav className="flex items-start justify-between gap-6 pt-8 border-t border-[var(--divider-color)]">
-        <div className="flex-1">
-          {previous && (
-            <Link href={`/art/${previous.slug}`} className="group block">
-              <span className="block text-xs uppercase tracking-widest" style={{ color: "var(--muted-text)" }}>
-                Previous
-              </span>
-              <span className="block mt-1 group-hover:text-accent transition-colors">
-                {previous.title}
-              </span>
-            </Link>
-          )}
-        </div>
-        <div className="flex-1 text-right">
-          {next && (
-            <Link href={`/art/${next.slug}`} className="group block">
-              <span className="block text-xs uppercase tracking-widest" style={{ color: "var(--muted-text)" }}>
-                Next
-              </span>
-              <span className="block mt-1 group-hover:text-accent transition-colors">{next.title}</span>
-            </Link>
-          )}
-        </div>
-      </nav>
+      {(previous || next) && (
+        <nav className="flex items-start justify-between gap-6 pt-8 border-t border-[var(--divider-color)]">
+          <div className="flex-1">
+            {previous && (
+              <Link href={`/art/${previous.slug}`} className="group block">
+                <span className="block text-xs uppercase tracking-widest" style={{ color: "var(--muted-text)" }}>
+                  Previous
+                </span>
+                <span className="block mt-1 group-hover:text-accent transition-colors">
+                  {previous.title}
+                </span>
+              </Link>
+            )}
+          </div>
+          <div className="flex-1 text-right">
+            {next && (
+              <Link href={`/art/${next.slug}`} className="group block">
+                <span className="block text-xs uppercase tracking-widest" style={{ color: "var(--muted-text)" }}>
+                  Next
+                </span>
+                <span className="block mt-1 group-hover:text-accent transition-colors">{next.title}</span>
+              </Link>
+            )}
+          </div>
+        </nav>
+      )}
 
       <div className="flex justify-center pt-4">
         <Link href="/art">

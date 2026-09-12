@@ -8,6 +8,8 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
+  // Resolves relative share images (e.g. artwork covers in /public) to absolute URLs.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.utkarshreads.me"),
   title: "utkarshreads",
   description: "A personal blog featuring posts, book reviews, and thoughts",
   generator: "v0.app",

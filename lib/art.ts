@@ -1,154 +1,133 @@
+/**
+ * One block of an artwork's story. A bare string is a paragraph; the object
+ * forms carry the in-progress photos, numbered plans and poems a longer
+ * story is built from.
+ */
+export type StoryBlock =
+  | string
+  | { image: string; alt: string }
+  | { list: string[] }
+  | { poem: string[] }
+
 export type Artwork = {
   slug: string
   title: string
   image: string
   year: string
   medium: string
-  /** Short line revealed when you hover the tile in the grid. */
+  /** Pull quote under the image on the artwork's own page, and its share description. */
   memory: string
   /** Long form, shown on the artwork's own page. */
-  story: string[]
+  story: StoryBlock[]
 }
+
+const koi = "/images/art/among-the-koi"
 
 export const artworks: Artwork[] = [
   {
-    slug: "half-light",
-    title: "Half-Light",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331040/624098996_18141474193472213_7796658356149480653_n_cbstok.jpg",
-    year: "2023",
-    medium: "Graphite and ink on toned grey paper",
-    memory: "I stopped before it was finished. The light kept eating her.",
+    slug: "among-the-koi",
+    title: "Among the Koi",
+    image: `${koi}/among-the-koi.jpg`,
+    year: "2026",
+    medium: "Oil pastels, crayons and poster colors in a sketchbook",
+    memory: "I exhaled the sky and learned to breathe in cobalt.",
     story: [
-      "A figure in a messy bun and a shirt three sizes too big, standing in that particular way you stand when you are not posing for anyone.",
-      "Half of her is rendered — the hair, the folds of the sleeve, the belt, the pockets. The other half has been eaten by a band of white running straight down her front. That was not a mistake. Toned paper lets you draw with an eraser, and once I pulled that highlight through her, finishing the rest felt like arguing with it.",
-      "So it stays unfinished on the right. It reads as light. It also reads as someone half-there, which is closer to what I wanted anyway.",
-    ],
-  },
-  {
-    slug: "dandelion",
-    title: "Dandelion",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331040/618921212_18058821260655650_8145429875105098442_n_esyve4.jpg",
-    year: "2022",
-    medium: "Graphite with coloured pencil on cartridge paper",
-    memory: "One orange pencil. That was the entire colour budget.",
-    story: [
-      "Almost all graphite, and then a single warm orange pencil dragged through the hair, along the jaw, across the lip. Nothing else in the drawing is coloured.",
-      "It is a cheap trick and it works every time: the eye goes straight to the warmth because there is nowhere else for it to go. The rest of the piece can stay quiet.",
-      "The dandelion in the bottom left came last, mostly because the empty corner was bothering me. It ended up being the part people ask about.",
-    ],
-  },
-  {
-    slug: "butterfly-hashira",
-    title: "Butterfly Hashira",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331041/649862991_18037290176768300_8370676747098605632_n_sasj8t.webp",
-    year: "2023",
-    medium: "0.5mm mechanical pencil on toned paper",
-    memory: "Every butterfly is its own tiny drawing. There are more than thirty.",
-    story: [
-      "Shinobu Kocho, mid-turn, with her haori opening into wings behind her.",
-      "The butterflies were the whole job. Each one has a full wing pattern, and they had to get smaller and looser as they moved out from her so the eye would read depth instead of clutter. Drawing the same shape thirty times at shrinking scale is a strange kind of meditation — by the twentieth one your hand knows it better than you do.",
-      "Shot in afternoon sun with jasmine from the balcony sitting on the corner of the page. The flowers were not planned. They were just there, and they smelled like the room I drew this in.",
-    ],
-  },
-  {
-    slug: "iris",
-    title: "Iris",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331041/651596362_18092879897084455_8711306822846071759_n_kbcyku.jpg",
-    year: "2021",
-    medium: "Graphite on smooth paper",
-    memory: "The white in an eye is never white. That was the lesson.",
-    story: [
-      "The drawing that taught me value. Not shape, not proportion — value.",
-      "Everything convincing in an eye lives in the contrast: the darkest dark is the pupil, the brightest bright is one small catchlight, and every other tone has to be squeezed carefully in between. The sclera looks white until you put an actual white next to it and realise it is a mid grey with a shadow arcing over the top of it.",
-      "The lashes are drawn as flicks from root to tip, fast, so they taper on their own. Slow down and they turn into wire.",
-    ],
-  },
-  {
-    slug: "crows-and-silence",
-    title: "Crows and Silence",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331041/652685154_18110379130704127_1898351548998042044_n_zkzlcd.webp",
-    year: "2023",
-    medium: "0.5mm mechanical pencil on A4",
-    memory: "Finger to the lips. The loudest quiet gesture in anime.",
-    story: [
-      "Itachi, with crows breaking out of the frame behind him and a Sharingan sitting above his head like a sun.",
-      "The composition is built on radiating lines — everything points outward from the centre of his forehead, so the eye keeps returning there no matter where it wanders. The clouds along the bottom are the only curves in the piece; without them the whole thing would feel like a spike.",
-      "It is a character built entirely on withheld information, so the finger over the mouth was the only pose worth drawing.",
-    ],
-  },
-  {
-    slug: "grain",
-    title: "Grain",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331041/651175483_18105759796860698_5494982387955650673_n_ukunmt.jpg",
-    year: "2021",
-    medium: "Graphite and blending stump on smooth paper",
-    memory: "Drawn mostly by taking graphite away, not putting it down.",
-    story: [
-      "Lips, close enough that they stop being lips and turn into terrain.",
-      "The method was backwards from how it looks. I laid down a flat mid-grey over the whole shape with a stump, then cut every crease out of it with a sharpened eraser, then went back in with pencil to deepen the darks. All those pale cracks are erased, not drawn.",
-      "Once you are working at this scale you are not drawing a mouth any more. You are drawing dry skin, and light sitting in the bottom of a groove, and the small wet line where the two halves meet.",
-    ],
-  },
-  {
-    slug: "pain",
-    title: "Pain",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331044/657344142_18311354329285958_5391800548972526953_n_zqohrt.webp",
-    year: "2022",
-    medium: "Graphite in a sketchbook",
-    memory: "A sketchbook page, done in one sitting, never redrawn.",
-    story: [
-      "Straight into the sketchbook — no transfer, no grid, no second attempt.",
-      "The hair is the giveaway that this was fast: sharp flat planes, hard edges, no rendering inside the shapes. It works because the face underneath is the opposite — soft gradients, the rippled rings in the eyes, the small shadows under the piercings.",
-      "The floating debris in the background is doing all the storytelling. Remove it and he is just a man scowling. Leave it and the ground is coming apart around him.",
-    ],
-  },
-  {
-    slug: "kalpana",
-    title: "Kalpana",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331043/656232602_18582718924041886_3110195844356389176_n_c2ounz.webp",
-    year: "2021",
-    medium: "Graphite on paper",
-    memory: "\"If you want to do something, what does it matter where you are ranked?\"",
-    story: [
-      "Kalpana Chawla in the flight suit, flag behind her, mission patch on the chest.",
-      "Portraits of real people are unforgiving in a way that stylised faces are not. You can miss by two millimetres on the corner of a mouth and the whole likeness collapses, and the only fix is to erase and go again. The smile here took more attempts than the entire spacesuit did.",
-      "I wrote her line under the drawing because that was the point of drawing it. It is a good sentence to have on a wall on the days the work is not going anywhere.",
-    ],
-  },
-  {
-    slug: "crosses",
-    title: "Crosses",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331040/583893491_18047501765693520_3312303426686389351_n_o8geyh.webp",
-    year: "2022",
-    medium: "Graphite and charcoal on paper",
-    memory: "The darkest thing I have drawn, and the fastest.",
-    story: [
-      "Heavy black bangs, loose strands falling across the face, small crosses marked under the eyes and on the cheek, one hand up under the chin.",
-      "The whole page is pushed dark. There is no white left anywhere — even the background is a worked grey — so the only light in the piece is on her face and knuckles, and it has to carry everything.",
-      "The strands crossing over her eyes were laid in last, in single unbroken pulls. Drawing over a finished face after hours of work is a small act of nerve. It is also the only reason the piece has any tension in it.",
-    ],
-  },
-  {
-    slug: "first-digital-eye",
-    title: "First Digital Eye",
-    image:
-      "https://res.cloudinary.com/dawxgroba/image/upload/v1786331043/681343023_18066868943693520_8447329337217888576_n_l3s4km.jpg",
-    year: "2024",
-    medium: "Digital painting",
-    memory: "Thirty years of graphite habits, unlearned in one file.",
-    story: [
-      "The first time the eye study got made in colour, on a screen.",
-      "Everything I knew from pencil had to be re-earned. Skin is not one colour — there is red pooling in the waterline, cool grey in the whites, gold and green fighting inside the same iris. Graphite lets you ignore all of that. Paint does not.",
-      "The lashes are the one place the old habit transferred cleanly: still single tapering strokes, still drawn root to tip, still fast. Some things do not change when you swap the tool.",
+      "It’s the 9th of September, and it’s that time of year when it rains all day and you are home, just chilling and scrolling reels, watching some shows and playing with your pup. So it’s been that for me as well. I slept a little too late, finally waking up on my alarm, had one of those morning meetings, and then video-called friends and began the day — how my day usually starts.",
+      "So this day was not an exception, but today, due to the rain, the lights were completely off. It happens in my town: when the lights go off there is, like, no network. You can’t scroll anymore or call anyone, and suddenly you are back in the Stone Age with just you and your mind to ponder.",
+      "I went to my room searching for stuff I could play with my pup. There’s a wooden cupboard where I keep certain clothes I wear every day, my grooming kit — perfumes, face wash and trimmer — small gym stuff, and, in a separate section, playtoys for my pup that I had kept there a day before. Reaching into it, I saw my art supplies, which I had kept a while back when I moved back from college but hadn’t used in over a year. So what did I find?",
+      "Some charcoal sticks, a pouch of different-sized erasers, different shades of pencil, and, around a corner, my colored material, which I like never used — I just bought it for some fancy competition I conducted back when I was my art club’s president. Before my old memories could flood me, what I found in the corner was a set of crayons I used as a kid but just carried around like a souvenir.",
+      "I was always into art in general. Whatever I found that could help me make some kind of beautiful thing, I used it to make art. Looking back, I used to make architectural designs using matchsticks and candle wax, with a wedding card as the base because it was much stronger than regular paper. I used to steal candles from the pooja place, burn them, and use their wax to create a small home for myself out of matchsticks — and these used to awe me so much, that using these little things I could create something visually soo big and beautiful.",
+      "You know, as a child I also couldn’t distinguish between crayons and oil pastels. We used to have those drawing classes where we bought sketchbooks and were given the task of making some drawings using colored crayons. Back then I didn’t have the luxury of buying those, but I had some friends I used to borrow colors from, and since I was good at drawing, my friends were also eager to see what I would make out of them.",
+      "And so I did — on an A4-sized sheet I made a flower garden with lilies, roses, sunflowers, daisies, tulips and all sorts of green grasses. The best thing out of that was the reactions I got from people when they saw it. I could tell they really liked it; my drawing teacher even showed it to the whole class, which made me happy and made me draw more and more often.",
+      "Now, as an adult, picking them up, the difference was immediate. The crayons felt light and defensive; they drew boundaries. Meanwhile the wax: messy, buttery, and unapologetic. The pastels felt dense, heavy, almost willing to melt under the warmth of my fingers. It was like I wasn’t holding wax; I was holding soft, creamy paint bound into a stick, waiting for a second chance.",
+      "As I looked through them, I had this feeling of wanting to witness it again, now, by adding some colored artwork to my sketchbook. So without second thoughts I offered Pyari her toy bone and made haste with oil pastels and crayons in my hand. It was the day I made my first art with oil pastels and crayons.",
+      "So I gathered all my supplies and stuff — the things I usually keep around when I draw, like my pencil pouch, sketchbook, scrapers and blending tools. For blending I had those paper blenders that smudge charcoal, but I never had any for oil pastels. I knew I had fingers I could use to smudge, but I didn’t wanna mess up my fingers too much, so I got one of those cotton ear buds. I’m all set and ready to start.",
+      "Turning to a new page in my sketchbook, before I began I put paper tape around the page so I could get those crisp edges after I finished — one thing I learned with charcoal art, and it works like a charm. Whenever I draw, I generally make the outline first so my proportions don’t fall into shambles.",
+      "For the outline I tend to be free with my hand and go with the flow, just having a basic idea. It will go something like this:",
+      {
+        list: [
+          "Okay, so the face will be the central part of this artwork — looking like a drowning person.",
+          "Then in the corner I can add a flower.",
+          "There will be 3–4 fishes swimming around the face of my character.",
+          "Many other small lotus leaves and lily pads scattered around the scene.",
+          "Finally, the swirling waves happening due to movements inside the river.",
+        ],
+      },
+      "As I began with phase 1, I started with blue, red and skin-colored oil pastels and drew her face freely, after which I would smudge it with cotton buds and a bit of fingers :p",
+      {
+        image: `${koi}/01-first-strokes.jpg`,
+        alt: "First strokes: the face blocked in with blue, red and skin-colored oil pastel, while the koi, lily pads and flower are still pencil outlines",
+      },
+      "Usually, when people see this stage, they think it looks ugly. But I like to view it like carbon being molded into a diamond.",
+      "This is after my first smudge — not the best in the world, but yes, it’s on this path.",
+      {
+        image: `${koi}/02-first-smudge.jpg`,
+        alt: "The face after the first smudge, its colors softened, with the rest of the page still in pencil",
+      },
+      "And time to add more colors — I added a tint of yellow shreds to her face and colored the fishies as well.",
+      {
+        image: `${koi}/03-yellow-and-koi.jpg`,
+        alt: "Yellow worked into the face, dark outlines around the features, and the first two koi colored orange",
+      },
+      "I proceeded to phase 2 and phase 3 and added more lilies and fishies — it’s looking beautiful now.",
+      "Also, if you notice, I messed up at one point with the lily pads, but it happens too often in art. You mess up, but that’s not the end of the world — it’s just part of the process that makes art much more beautiful.",
+      {
+        image: `${koi}/04-lilies-and-koi.jpg`,
+        alt: "Green lily pads, a yellow flower and more orange koi added around the face on the white page",
+      },
+      "On to phase 4 and adding those swirling waves — it was the fun part, drawing dashes and dots, which would be followed by much-needed smudging.",
+      {
+        image: `${koi}/05-wave-dashes.jpg`,
+        alt: "Light and dark blue dashes drawn across the white spaces between the face, koi and lily pads",
+      },
+      "Okay, so after smudging it looked like this, and my hands are full blue now along with the cotton ear buds. My hands are messy now, but it was worth it — the artwork looks much more complete, we can say now.",
+      {
+        image: `${koi}/06-waves-smudged.jpg`,
+        alt: "The wave dashes smudged into a continuous light blue pond",
+      },
+      "Now we can proceed to the multi-layering I talked about — this will give it more depth.",
+      "Okay, so on the 2nd layer I added a darker shade of blue on our light blue swirly base layer, and also added some dark orange shades on the fishies.",
+      {
+        image: `${koi}/07-second-layer.jpg`,
+        alt: "A second layer of darker blue swirled over the light blue water",
+      },
+      "On the 3rd layer I added a brown-colored layer on the waves to show more depth and contrast, and also black outlines on the fishes and petals — after this layer we can see our carbon turning into a diamond :)",
+      {
+        image: `${koi}/08-third-layer.jpg`,
+        alt: "A third layer adding brown into the waves, with black outlines on the koi and the flower petals",
+      },
+      "I wanted to add more whites to our artwork to make some features pop out, but I couldn’t, as the layers kept saying no to me. So, I had some poster colors and brushes lying around; at first I was skeptical whether it would work, but I gave it a try and started with the fishies’ scales, and coloring them turned out to be a verryyy good decision. So I proceeded to work on their eyes, and that really gave my fishes really good vibes. Moreover, I added whites on the lily pads and swirling waves, and also on our character’s teeth and her lip gloss.",
+      {
+        image: `${koi}/09-poster-color-whites.jpg`,
+        alt: "White poster color on the koi stripes and eyes, the lily pads and the ripples, with the oil pastel box beside the page",
+      },
+      "I peeled off the paper tape carefully, getting our crisp borders, and voilà — the artwork is ready 😋",
+      "Easy-peezyy",
+      {
+        image: `${koi}/10-tape-peeled.jpg`,
+        alt: "The finished piece with the tape peeled away, leaving a clean white border around the painting",
+      },
+      "I’m really satisfied with how it all went down, and guess what — it’s sunset already. The lights did come back, and the clouds have cleared now.",
+      "And I’m enjoying my small sunset with my new artwork in my hands — and I am loving it :)",
+      "A small piece I wrote on this artwork:",
+      {
+        poem: [
+          "I exhaled the sky",
+          "and learned to breathe in cobalt.",
+          "Orange koi orbit like small, wet suns,",
+          "while time ripples outward,",
+          "and the water forgets my name.",
+        ],
+      },
+      "A couple of pics from my balcony — the clouds seem like orange mountains :p",
+      {
+        image: `${koi}/11-balcony-clouds.jpg`,
+        alt: "Sunset-lit clouds glowing orange under a grey-blue sky, a rooftop edge in silhouette",
+      },
+      {
+        image: `${koi}/12-balcony-clouds-roof.jpg`,
+        alt: "Orange clouds rising behind the dark corner of a brick building with a ladder, seen from the balcony",
+      },
     ],
   },
 ]
