@@ -162,7 +162,7 @@ export default function AboutPage() {
               >
                 Yahaha, you found me!
               </a>{" "}
-              I'm Utkarsh Singh, a designer and developer for digital products, an artist in real life.
+              I'm Utkarsh Singh, a designer and developer, an artist irl.
             </p>
 
             <p>
@@ -222,7 +222,7 @@ export default function AboutPage() {
             </div>
 
             <div className="space-y-4">
-              <p>Anyway, here's a quote I love from Simone Weil:</p>
+              <p>Here's a quote I love from Simone Weil:</p>
               <blockquote>
                 <p>
                   "I also am other than what I imagine myself to be.
@@ -253,8 +253,7 @@ export default function AboutPage() {
             </div>
 
             <p>
-              That is all for now. I'll add more stuff with time. Also, hit me up on instagram if
-              you want some therapy sessions. Cache you later.
+              That is all for now. I'll add more stuff with time. Cache you later.
             </p>
           </div>
         </div>
