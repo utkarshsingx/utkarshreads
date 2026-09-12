@@ -12,6 +12,9 @@ interface ArtworkPageProps {
   params: Promise<{ slug: string }>
 }
 
+// Only slugs listed in lib/art.ts exist, so removed pieces get a real 404.
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return artworks.map((artwork) => ({ slug: artwork.slug }))
 }
@@ -90,11 +93,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
           ← Gallery
         </Link>
 
-        <h1 className="text-3xl text-balance mt-6 mb-3">{artwork.title}</h1>
-
-        <p className="text-sm mb-10" style={{ color: "var(--muted-text)" }}>
-          {artwork.medium} · {artwork.year}
-        </p>
+        <h1 className="text-3xl text-balance text-center mt-6 mb-10">{artwork.title}</h1>
       </div>
 
       <img

@@ -19,7 +19,6 @@ const footerLinks: FooterLink[] = [
   { label: "RSS", href: "/rss.xml" },
   { label: "Archive", href: "/archive" },
   { label: "Instagram", href: "https://instagram.com/utkarshsingx", external: true },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/utkarshsingx/", external: true },
   { label: "GitHub", href: "https://github.com/utkarshsingx/", external: true },
   { label: "YouTube", href: "https://www.youtube.com/@utkarshsingx", external: true },
 ]
