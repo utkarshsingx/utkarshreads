@@ -14,7 +14,7 @@ export type Artwork = {
   title: string
   image: string
   year: string
-  /** Pull quote under the image on the artwork's own page, and its share description. */
+  /** Share description for the artwork's page (meta description and Open Graph). */
   memory: string
   /** Long form, shown on the artwork's own page. */
   story: StoryBlock[]

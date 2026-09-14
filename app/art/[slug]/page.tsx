@@ -96,14 +96,6 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
         <h1 className="text-3xl text-balance text-center mt-6 mb-10">{artwork.title}</h1>
       </div>
 
-      <img
-        src={artwork.image}
-        alt={artwork.title}
-        className="w-full h-auto rounded-sm"
-      />
-
-      <blockquote className="art-detail-memory">{artwork.memory}</blockquote>
-
       <article className="prose prose-lg text-left">
         {artwork.story.map((block, index) => (
           <StoryBlockView key={index} block={block} />

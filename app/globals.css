@@ -291,14 +291,3 @@
   }
 }
 
-.art-detail-memory {
-  border-left: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
-  padding-left: 1.25rem;
-  margin: 2.5rem 0;
-  font-family: "Copernicus Book Italic", "EB Garamond", Georgia, serif;
-  font-style: italic;
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: var(--quote-color);
-}
-
