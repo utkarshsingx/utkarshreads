@@ -5,6 +5,7 @@ excerpt: "This is my personal space. Read my thoughts."
 tags: ["Personal"]
 featured: true
 hidden: false
+archived: true
 ---
 
 Hello stranger, if you got till here, oh well. This is my personal space. Here, I will write and share everything I can with you, but it is still in development. I have some things (content) to give, but I tend to be ill lately and can't focus.

@@ -7,7 +7,7 @@ interface PostPageProps {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts()
+  const posts = await getAllPosts(undefined, { includeArchived: true })
   return posts.map((post) => ({
     slug: post.slug,
   }))

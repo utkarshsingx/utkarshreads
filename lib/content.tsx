@@ -17,6 +17,8 @@ export interface PostData {
   backgroundVideo?: string
   textTone?: "light" | "dark"
   hidden?: boolean
+  /** Out of the feed, still listed in the archive. */
+  archived?: boolean
 }
 
 export interface BookData {
@@ -37,7 +39,7 @@ export const postsPerPage = 5
 
 export async function getAllPosts(
   page?: number,
-  options?: { includeHidden?: boolean },
+  options?: { includeHidden?: boolean; includeArchived?: boolean },
 ): Promise<PostData[]> {
   if (!fs.existsSync(postsDirectory)) {
     return []
@@ -71,6 +73,7 @@ export async function getAllPosts(
         image?: string
         imageAlt?: string
         hidden?: boolean
+        archived?: boolean
         backgroundVideo?: string
         textTone?: "light" | "dark"
       }
@@ -83,10 +86,13 @@ export async function getAllPosts(
         backgroundVideo: data.backgroundVideo,
         textTone: data.textTone,
         hidden: data.hidden ?? false,
+        archived: data.archived ?? false,
       }
     }),
   )
-  const filteredPosts = options?.includeHidden ? allPostsData : allPostsData.filter((post) => !post.hidden)
+  const filteredPosts = options?.includeHidden
+    ? allPostsData
+    : allPostsData.filter((post) => !post.hidden && (options?.includeArchived || !post.archived))
   const sortedPosts = filteredPosts.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   if (page) {
@@ -98,7 +104,7 @@ export async function getAllPosts(
   return sortedPosts
 }
 
-export async function getTotalPostPages(options?: { includeHidden?: boolean }) {
+export async function getTotalPostPages(options?: { includeHidden?: boolean; includeArchived?: boolean }) {
   const posts = await getAllPosts(undefined, options)
   return Math.ceil(posts.length / postsPerPage)
 }
@@ -125,6 +131,7 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
     image?: string
     imageAlt?: string
     hidden?: boolean
+    archived?: boolean
     backgroundVideo?: string
     textTone?: "light" | "dark"
   }
@@ -137,6 +144,7 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
     backgroundVideo: data.backgroundVideo,
     textTone: data.textTone,
     hidden: data.hidden ?? false,
+    archived: data.archived ?? false,
   }
 }
 

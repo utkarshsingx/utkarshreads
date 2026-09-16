@@ -4,7 +4,8 @@ import { Header } from "@/components/layout/header"
 import Link from "next/link"
 
 export default async function ArchivePage() {
-  const posts = (await getAllPosts()).filter((post) => !post.hidden)
+  // The archive keeps posts that have left the feed.
+  const posts = await getAllPosts(undefined, { includeArchived: true })
 
   const postsByYear = posts.reduce(
     (acc, post) => {
