@@ -30,7 +30,7 @@ export const artworks: Artwork[] = [
     year: "2026",
     memory: "I exhaled the sky and learned to breathe in cobalt.",
     story: [
-      "It’s the 9th of September, and it’s that time of year when it rains all day and you are home, just chilling and scrolling reels, watching some shows and playing with your pup. So it’s been that for me as well. I slept a little too late, finally waking up on my alarm, had one of those morning meetings, and then video-called friends and began the day, how my day usually starts.",
+      "It’s the start of September, the month of rain, when it pours all day and you are home, just chilling and scrolling reels, watching some shows and playing with your pup. So it’s been that for me as well. I slept a little too late, finally waking up on my alarm, had one of those morning meetings, and began the day, how my day usually starts.",
       "So this day was not an exception, but today, due to the rain, the lights were completely off. It happens in my town: when the lights go off there is, like, no network. You can’t scroll anymore or call anyone, and suddenly you are back in the Stone Age with just you and your mind to ponder.",
       "I went to my room searching for stuff I could play with my pup. There’s a wooden cupboard where I keep certain clothes I wear every day, my grooming kit (perfumes, face wash and trimmer), small gym stuff, and, in a separate section, playtoys for my pup that I had kept there a day before. Reaching into it, I saw my art supplies, which I had kept a while back when I moved back from college but hadn’t used in over a year. So what did I find?",
       "Some charcoal sticks, a pouch of different-sized erasers, different shades of pencil, and, around a corner, my colored material, which I, like, never used. I just bought it for some fancy competition I conducted back when I was my art club’s president. Before my old memories could flood me, what I found in the corner was a set of crayons I used as a kid but just carried around like a souvenir.",
@@ -106,6 +106,10 @@ export const artworks: Artwork[] = [
         alt: "The finished piece with the tape peeled away, leaving a clean white border around the painting",
       },
       "I’m really satisfied with how it all went down, and guess what? It’s sunset already. The lights did come back, and the clouds have cleared now.",
+      {
+        image: `${koi}/13-holding-the-artwork.jpg`,
+        alt: "Holding the finished sketchbook page up to the camera at home, the painting facing out",
+      },
       "And I’m enjoying my small sunset with my new artwork in my hands, and I am loving it :)",
       "A small piece I wrote on this artwork:",
       {
