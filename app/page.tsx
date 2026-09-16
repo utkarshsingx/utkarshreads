@@ -26,6 +26,14 @@ export default async function PostsPage() {
         </section>
       )}
 
+      {allPosts.length === 0 && (
+        <section className="py-20 text-center">
+          <p className="text-lg" style={{ color: "var(--muted-text)" }}>
+            uh-huh! I wonder where all Utkarsh’s posts went!?
+          </p>
+        </section>
+      )}
+
       {featuredPosts.length > 0 && (
         <section className="space-y-8 mt-16">
           <div className="border border-border p-6 rounded-lg" style={{ backgroundColor: '#1E1E1D', borderColor: '#2a2926' }}>
